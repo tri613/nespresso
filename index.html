@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>Nespresso coffee</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script>
@@ -15,8 +15,23 @@
           ga('create', 'UA-67482141-4', 'auto');
           ga('send', 'pageview');
         </script>
+        <link rel="stylesheetm " href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="./dist/css/base.css">
     </head>
     <body>
-
+      <header>
+        <!-- <h1>Nespresso coffee</h1> -->
+        <form>
+          <div class="input-wrap">
+            <label for="search-input"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search icons</span></label>
+            <input type="text" name="search" placeholder="a nespresso coffee name or color">
+          </div>
+        </form>
+      </header>
+      <div class="body-wrapper">
+        <ul></ul>
+      </div>
+      <script src="https://use.fontawesome.com/8a5a0d373e.js"></script>
+      <script src="./dist/js/parse.js" charset="utf-8"></script>
     </body>
 </html>

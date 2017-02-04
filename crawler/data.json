@@ -2,7 +2,15 @@
   {
     "name": "Kazaar",
     "flavor": "木質香調, 辛香調, 濃郁強烈",
-    "image": "/ecom/medias/sys_master/public/9149698375710/C-0089-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9149698375710/C-0089-mediaDetail.png",
+    "color": {
+      "name": "black",
+      "rgb": [
+        23,
+        31,
+        49
+      ]
+    },
     "qv": "/tw/zh/quickView/kazaar?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "12",
     "details": {
@@ -13,7 +21,15 @@
   {
     "name": "Dharkan",
     "flavor": "長時間烘焙, 微可可粉味及穀物香, 濃郁強烈",
-    "image": "/ecom/medias/sys_master/public/9149716070430/C-0090-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9149716070430/C-0090-mediaDetail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        54,
+        74,
+        76
+      ]
+    },
     "qv": "/tw/zh/quickView/dharkan-coffee?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "11",
     "details": {
@@ -24,7 +40,15 @@
   {
     "name": "Ristretto",
     "flavor": "微水果香調, 重烘焙, 濃郁強烈",
-    "image": "/ecom/medias/sys_master/public/9131330404382/ristretto-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131330404382/ristretto-mediaDetail.png",
+    "color": {
+      "name": "black",
+      "rgb": [
+        30,
+        30,
+        29
+      ]
+    },
     "qv": "/tw/zh/quickView/ristretto?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "10",
     "details": {
@@ -35,7 +59,15 @@
   {
     "name": "Arpeggio",
     "flavor": "可可香調, 重烘焙, 濃郁強烈",
-    "image": "/ecom/medias/sys_master/public/9131329617950/arpeggio-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131329617950/arpeggio-mediaDetail.png",
+    "color": {
+      "name": "black",
+      "rgb": [
+        37,
+        23,
+        47
+      ]
+    },
     "qv": "/tw/zh/quickView/arpeggio?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "9",
     "details": {
@@ -46,7 +78,15 @@
   {
     "name": "Roma",
     "flavor": "木質香調, 穀物香調, 濃郁強烈",
-    "image": "/ecom/medias/sys_master/public/9131330469918/roma-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131330469918/roma-mediaDetail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        63,
+        54,
+        50
+      ]
+    },
     "qv": "/tw/zh/quickView/roma?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "8",
     "details": {
@@ -57,7 +97,15 @@
   {
     "name": "Livanto",
     "flavor": "焦糖風味, 圓潤平衡",
-    "image": "/ecom/medias/sys_master/public/9131330338846/livanto-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131330338846/livanto-mediaDetail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        101,
+        61,
+        30
+      ]
+    },
     "qv": "/tw/zh/quickView/livanto?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "6",
     "details": {
@@ -68,7 +116,15 @@
   {
     "name": "Capriccio",
     "flavor": "穀物香調, 圓潤平衡",
-    "image": "/ecom/medias/sys_master/public/9131329683486/capriccio-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131329683486/capriccio-mediaDetail.png",
+    "color": {
+      "name": "black",
+      "rgb": [
+        25,
+        45,
+        36
+      ]
+    },
     "qv": "/tw/zh/quickView/capriccio?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "5",
     "details": {
@@ -79,7 +135,15 @@
   {
     "name": "Volluto",
     "flavor": "穀物香調, 花果香調, 圓潤平衡",
-    "image": "/ecom/medias/sys_master/public/9131330732062/volluto-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131330732062/volluto-mediaDetail.png",
+    "color": {
+      "name": "gold",
+      "rgb": [
+        184,
+        146,
+        80
+      ]
+    },
     "qv": "/tw/zh/quickView/volluto?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "4",
     "details": {
@@ -90,7 +154,15 @@
   {
     "name": "Cosi",
     "flavor": "花果香調, 穀物香調",
-    "image": "/ecom/medias/sys_master/public/9740977438750/Cosi-detail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9740977438750/Cosi-detail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        114,
+        87,
+        73
+      ]
+    },
     "qv": "/tw/zh/quickView/cosi?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "4",
     "details": {
@@ -101,7 +173,15 @@
   {
     "name": "Indriya from India",
     "flavor": "辛香調, 濃郁強烈",
-    "image": "/ecom/medias/sys_master/public/9131330207774/indriya-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131330207774/indriya-mediaDetail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        76,
+        72,
+        66
+      ]
+    },
     "qv": "/tw/zh/quickView/indriya-from-india?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "10",
     "details": {
@@ -112,7 +192,15 @@
   {
     "name": "Rosabaya de Colombia",
     "flavor": "紅果與酒香調, 花果香調",
-    "image": "/ecom/medias/sys_master/public/9131330535454/rosabaya-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131330535454/rosabaya-mediaDetail.png",
+    "color": {
+      "name": "silver",
+      "rgb": [
+        164,
+        137,
+        133
+      ]
+    },
     "qv": "/tw/zh/quickView/rosabaya-de-colombia?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "6",
     "details": {
@@ -123,7 +211,15 @@
   {
     "name": "Dulsão do Brasil",
     "flavor": "香甜穀物, 圓潤平衡",
-    "image": "/ecom/medias/sys_master/public/9131330076702/dulsao-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131330076702/dulsao-mediaDetail.png",
+    "color": {
+      "name": "silver",
+      "rgb": [
+        195,
+        172,
+        145
+      ]
+    },
     "qv": "/tw/zh/quickView/dulsao-do-brasil?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "4",
     "details": {
@@ -134,7 +230,15 @@
   {
     "name": "Bukeela ka Ethiopia",
     "flavor": "原野風味, 花香",
-    "image": "/ecom/medias/sys_master/public/9247812845598/C-0103-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9247812845598/C-0103-mediaDetail.png",
+    "color": {
+      "name": "gold",
+      "rgb": [
+        194,
+        126,
+        98
+      ]
+    },
     "qv": "/tw/zh/quickView/bukeela-ka-ethiopia?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "3",
     "details": {
@@ -145,7 +249,15 @@
   {
     "name": "Envivo Lungo",
     "flavor": "焦糖香氣, 木質香調, 濃郁強烈",
-    "image": "/ecom/medias/sys_master/public/10010589134878/Caps-detail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/10010589134878/Caps-detail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        123,
+        54,
+        33
+      ]
+    },
     "qv": "/tw/zh/quickView/envivo-lungo?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "9",
     "details": {
@@ -156,7 +268,15 @@
   {
     "name": "Fortissio Lungo",
     "flavor": "香甜穀物, 麥芽烘烤香",
-    "image": "/ecom/medias/sys_master/public/9358190968862/C-0126-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9358190968862/C-0126-mediaDetail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        46,
+        78,
+        79
+      ]
+    },
     "qv": "/tw/zh/quickView/fortissio-lungo?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "8",
     "details": {
@@ -167,7 +287,15 @@
   {
     "name": "Vivalto Lungo",
     "flavor": "花香, 烘焙香調, 花果香調",
-    "image": "/ecom/medias/sys_master/public/9131330666526/vivalto-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131330666526/vivalto-mediaDetail.png",
+    "color": {
+      "name": "purple",
+      "rgb": [
+        59,
+        87,
+        138
+      ]
+    },
     "qv": "/tw/zh/quickView/vivalto-lungo?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "4",
     "details": {
@@ -178,7 +306,15 @@
   {
     "name": "Linizio Lungo",
     "flavor": "麥芽穀物香調, 圓潤平衡",
-    "image": "/ecom/medias/sys_master/public/9131330273310/linizio-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131330273310/linizio-mediaDetail.png",
+    "color": {
+      "name": "orange",
+      "rgb": [
+        229,
+        106,
+        9
+      ]
+    },
     "qv": "/tw/zh/quickView/linizio-lungo?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "4",
     "details": {
@@ -189,7 +325,15 @@
   {
     "name": "Arpeggio Decaffeinato",
     "flavor": "可可香調, 重烘焙, 濃郁強烈",
-    "image": "/ecom/medias/sys_master/public/9559887970334/ArpeggioDecaffeinato-detail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9559887970334/ArpeggioDecaffeinato-detail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        60,
+        47,
+        77
+      ]
+    },
     "qv": "/tw/zh/quickView/arpeggio-decaffeinato?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "9",
     "details": {
@@ -200,7 +344,15 @@
   {
     "name": "Volluto Decaffeinato",
     "flavor": "穀物香調, 花果香調, 圓潤平衡",
-    "image": "/ecom/medias/sys_master/public/9559889739806/VollutoDecaffeinato-detail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9559889739806/VollutoDecaffeinato-detail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        156,
+        110,
+        50
+      ]
+    },
     "qv": "/tw/zh/quickView/volluto-decaffeinato?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "4",
     "details": {
@@ -211,7 +363,15 @@
   {
     "name": "Vivalto Lungo Decaffeinato",
     "flavor": "花香, 烘焙香調, 花果香調",
-    "image": "/ecom/medias/sys_master/public/9559896293406/VivaltoDecaffeinato-detail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9559896293406/VivaltoDecaffeinato-detail.png",
+    "color": {
+      "name": "purple",
+      "rgb": [
+        42,
+        89,
+        152
+      ]
+    },
     "qv": "/tw/zh/quickView/vivalto-lungo-decaffeinato?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "4",
     "details": {
@@ -222,7 +382,15 @@
   {
     "name": "Decaffeinato Intenso",
     "flavor": "穀物香調, 烘焙可可香, 濃郁強烈",
-    "image": "/ecom/medias/sys_master/public/9131329945630/decaffeinato-intenso-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131329945630/decaffeinato-intenso-mediaDetail.png",
+    "color": {
+      "name": "black",
+      "rgb": [
+        54,
+        22,
+        26
+      ]
+    },
     "qv": "/tw/zh/quickView/decaffeinato-intenso?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "7",
     "details": {
@@ -233,7 +401,15 @@
   {
     "name": "Ciocattino",
     "flavor": "巧克力風味",
-    "image": "/ecom/medias/sys_master/public/9148570894366/ciocattino-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9148570894366/ciocattino-mediaDetail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        59,
+        49,
+        43
+      ]
+    },
     "qv": "/tw/zh/quickView/ciocattino?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "6",
     "details": {
@@ -244,7 +420,15 @@
   {
     "name": "Vanilio",
     "flavor": "香草風味",
-    "image": "/ecom/medias/sys_master/public/9131330600990/vanillio-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131330600990/vanillio-mediaDetail.png",
+    "color": {
+      "name": "silver",
+      "rgb": [
+        198,
+        193,
+        168
+      ]
+    },
     "qv": "/tw/zh/quickView/vanilio?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "6",
     "details": {
@@ -255,23 +439,20 @@
   {
     "name": "Caramelito",
     "flavor": "焦糖風味",
-    "image": "/ecom/medias/sys_master/public/9131329749022/caramelito-mediaDetail.png",
+    "image": "https://www.nespresso.com/ecom/medias/sys_master/public/9131329749022/caramelito-mediaDetail.png",
+    "color": {
+      "name": "brown",
+      "rgb": [
+        145,
+        91,
+        57
+      ]
+    },
     "qv": "/tw/zh/quickView/caramelito?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
     "intensity": "6",
     "details": {
       "subtitle": "濃郁焦糖風味",
       "description": "焦糖的甜味柔軟莉梵朵(Livanto) 的烘培香調，巧妙的結合展現猶如太妃軟糖般的稠軟甜潤。淨重50公克(每盒10顆)，每顆咖啡因含量71毫克。"
-    }
-  },
-  {
-    "name": "蘋果酥捲風味咖啡",
-    "flavor": "烤蘋果香調, 圓潤平衡, 肉桂香調, 花果香調",
-    "image": "/ecom/medias/sys_master/public/10138274758686/Apfelstrudel-detail.png",
-    "qv": "/tw/zh/quickView/variations-apfelstrudel?quickViewMode=white&maxIntensity=13&productPageOrigine=capsulePLP",
-    "intensity": "6",
-    "details": {
-      "subtitle": "奧地利人氣甜點 - 蘋果酥捲",
-      "description": "三款冬季限量款風味咖啡 完美詮釋奧地利人氣糕點的誘人滋味 Nespresso 以著名的傳統奧地利糕點為靈感，推出全新限量款風味咖啡蘋果酥捲風味咖啡是以圓潤平衡的 Livanto 為基礎，並揉合糕餅、烤蘋果與些微肉桂香調，帶出節慶的溫暖氣氛。"
     }
   }
 ]
