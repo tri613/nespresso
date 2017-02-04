@@ -5,17 +5,34 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var products = [];
 var wrapper = document.querySelector("ul");
 var searchInput = document.querySelector("[name='search']");
+var url = "dist/data.json";
 
-function initData() {
-  return fetch("dist/data.json").then(function (response) {
-    return response.json();
-  }).then(function (data) {
-    var sorted = data.sort(function (a, b) {
-      return a.color.rgb.reduce(add) < b.color.rgb.reduce(add) ? -1 : 1;
+function fetchData() {
+  if (window.fetch) {
+    return fetch(url).then(function (response) {
+      return response.json();
     });
-    products.push.apply(products, _toConsumableArray(sorted));
-    return products;
+  } else {
+    return new Promise(function (resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          var result = JSON.parse(this.responseText);
+          resolve(result);
+        }
+      };
+      xhr.open("GET", url, true);
+      xhr.send();
+    });
+  }
+}
+
+function initData(_data) {
+  var sorted = _data.sort(function (a, b) {
+    return a.color.rgb.reduce(add) < b.color.rgb.reduce(add) ? -1 : 1;
   });
+  products.push.apply(products, _toConsumableArray(sorted));
+  return products;
 }
 
 function add(a, b) {
@@ -39,5 +56,6 @@ function search(e) {
   showData(result);
 }
 
-initData().then(showData);
+fetchData().then(initData).then(showData);
+
 searchInput.addEventListener('keyup', search);

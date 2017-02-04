@@ -1,15 +1,30 @@
 const products = [];
 const wrapper = document.querySelector("ul");
 const searchInput = document.querySelector("[name='search']");
+const url = "dist/data.json";
 
-function initData() {
-  return fetch("dist/data.json")
-    .then(response => response.json())
-    .then(data => {
-      const sorted = data.sort((a,b) => a.color.rgb.reduce(add) < b.color.rgb.reduce(add) ? -1 : 1);
-      products.push(...sorted);
-      return products;
+function fetchData() {
+  if (window.fetch) {
+    return fetch(url).then(response => response.json());
+  } else {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          const result = JSON.parse(this.responseText);
+          resolve(result);
+        }
+      };
+      xhr.open("GET", url, true);
+      xhr.send();
     });
+  }
+}
+
+function initData(_data) {
+  const sorted = _data.sort((a,b) => a.color.rgb.reduce(add) < b.color.rgb.reduce(add) ? -1 : 1);
+  products.push(...sorted);
+  return products;
 }
 
 function add(a, b) {
@@ -45,5 +60,8 @@ function search(e) {
   showData(result);
 }
 
-initData().then(showData);
+fetchData()
+.then(initData)
+.then(showData);
+
 searchInput.addEventListener('keyup', search);
