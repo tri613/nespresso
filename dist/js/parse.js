@@ -7,7 +7,7 @@ var wrapper = document.querySelector("ul");
 var searchInput = document.querySelector("[name='search']");
 
 function initData() {
-  return fetch("./dist/data.json").then(function (response) {
+  return fetch("dist/data.json").then(function (response) {
     return response.json();
   }).then(function (data) {
     var sorted = data.sort(function (a, b) {

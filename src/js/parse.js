@@ -3,7 +3,7 @@ const wrapper = document.querySelector("ul");
 const searchInput = document.querySelector("[name='search']");
 
 function initData() {
-  return fetch("./dist/data.json")
+  return fetch("dist/data.json")
     .then(response => response.json())
     .then(data => {
       const sorted = data.sort((a,b) => a.color.rgb.reduce(add) < b.color.rgb.reduce(add) ? -1 : 1);
