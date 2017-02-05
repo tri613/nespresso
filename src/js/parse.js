@@ -54,8 +54,8 @@ function showData(_products) {
 }
 
 function search(e) {
-  const keyword = this.value.trim();
-  const result = products.filter(product => product.name.includes(keyword) ||
+  const keyword = this.value.trim().toLowerCase();
+  const result = products.filter(product => product.name.toLowerCase().includes(keyword) ||
                                             product.color.names.join(" ").includes(keyword));
   showData(result);
 }

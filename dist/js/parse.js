@@ -49,9 +49,9 @@ function showData(_products) {
 }
 
 function search(e) {
-  var keyword = this.value.trim();
+  var keyword = this.value.trim().toLowerCase();
   var result = products.filter(function (product) {
-    return product.name.includes(keyword) || product.color.names.join(" ").includes(keyword);
+    return product.name.toLowerCase().includes(keyword) || product.color.names.join(" ").includes(keyword);
   });
   showData(result);
 }
