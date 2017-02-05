@@ -18,6 +18,8 @@ body {
 
 header {
   z-index: 10;
+  top: 0;
+  left: 0;
   position: fixed;
   width: 100%;
   background-color: @accent;
@@ -34,6 +36,9 @@ header {
   padding-top: @top;
   padding-bottom: 5px;
   min-height: calc(100vh - @top);
+  top: 0;
+  left: 0;
+  position: relative;
 }
 
 form {
@@ -44,6 +49,9 @@ form {
     margin: 0 auto;
     padding: 8px 10px;
     display: flex;
+    label {
+      padding-top: 2px;
+    }
     input {
       font-size: 16px;
       padding: 0;

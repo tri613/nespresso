@@ -11,6 +11,8 @@ body {
 }
 header {
   z-index: 10;
+  top: 0;
+  left: 0;
   position: fixed;
   width: 100%;
   background-color: #6b6562;
@@ -26,6 +28,9 @@ header h1 {
   padding-top: 63px;
   padding-bottom: 5px;
   min-height: calc(37vh);
+  top: 0;
+  left: 0;
+  position: relative;
 }
 form .input-wrap {
   border-radius: 20px;
@@ -36,6 +41,9 @@ form .input-wrap {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+form .input-wrap label {
+  padding-top: 2px;
 }
 form .input-wrap input {
   font-size: 16px;
