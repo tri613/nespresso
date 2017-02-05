@@ -67,6 +67,7 @@ function showData(_products) {
   setTimeout(function () {
     return wrapper.classList.add("active");
   }, 100);
+  document.body.scrollTop = 0;
 }
 
 function triggerSearch(e) {

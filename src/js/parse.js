@@ -62,6 +62,7 @@ function showData(_products) {
   wrapper.classList.remove("active");
   wrapper.innerHTML = content;
   setTimeout(() => wrapper.classList.add("active"), 100);
+  document.body.scrollTop = 0;
 }
 
 function triggerSearch(e) {
