@@ -1,9 +1,15 @@
 const products = [];
 const url = "dist/data.json";
+const add = (a, b) => a + b;
+const equalArray = (a, b) => a.every(item => b.includes(item)) && b.every(item => a.includes(item));
+    
+let keywordsCache = [];
+let delayTimer;
+
+//nodes
 const wrapper = document.querySelector("ul");
 const form = document.querySelector("form");
 const searchInput = document.querySelector("[name='search']");
-const tags = [];
 
 function fetchData() {
   if (window.fetch) {
@@ -29,40 +35,47 @@ function initData(_data) {
   return products;
 }
 
-function add(a, b) {
-  return a+b;
-}
-
 function showData(_products) {
   const list = _products.map((product, index) => {
     return `
-    <li>
-      <div class="card">
-        <div class="flex-wrap">
-          <div class="flex-item"><img class="" src="${product.image}" alt="${product.name}"></div>
-          <div class="flex-item" style="color: rgb(${product.color.rgb.join(",")});">
-            <h2>${product.name}</h2>
-            <span><i class="fa fa-coffee" aria-hidden="true"></i> ${product.intensity}</span>
-            <h3>${product.flavor}</h3>
-            <h5>${product.color.names.map(name => `<span class="tag" data-color="${name}">#${name}</span>`).join(' ')}</h5>
+      <li>
+        <div class="card">
+          <div class="flex-wrap">
+            <div class="flex-item"><img class="" src="${product.image}" alt="${product.name}"></div>
+            <div class="flex-item" style="color: rgb(${product.color.rgb.join(",")});">
+              <h2>${product.name}</h2>
+              <span><i class="fa fa-coffee" aria-hidden="true"></i> ${product.intensity}</span>
+              <h3>${product.flavor}</h3>
+              <h5>${product.color.names.map(name => `<span class="tag" data-color="${name}">#${name}</span>`).join(' ')}</h5>
+            </div>
           </div>
+          <p>${product.details.description}<p>
         </div>
-        <p>${product.details.description}<p>
-      </div>
-    </li>
-  `});
-  wrapper.classList.add("active");
+      </li>
+    `;
+  });
+  wrapper.classList.remove("active");
   wrapper.innerHTML = list.join('');
-  // setTimeout(() => wrapper.classList.add("active"), 300);
+  setTimeout(() => wrapper.classList.add("active"), 300);
 }
 
-function search(e) {
+function triggerSearch(e) {
+  const delay = 500;
   e.preventDefault();
+  clearTimeout(delayTimer);
+  delayTimer = setTimeout(search, delay);
+}
+
+function search() {
   const keywords = searchInput.value.trim().toLowerCase().split(' ');
+  if (equalArray(keywords, keywordsCache)) {
+    return false;
+  }
   const result = products.filter(product => {
     return keywords.some(keyword => product.name.toLowerCase().includes(keyword)
                                     || product.color.names.join(" ").includes(keyword));
   });
+  keywordsCache = keywords;
   showData(result);
 }
 
@@ -76,13 +89,8 @@ function filterColor(e) {
 
 fetchData()
 .then(initData)
-.then(showData)
-// .then(res => {
-//   const nodes = Array.from(document.querySelectorAll(".tag"));
-//   tags.push(...nodes);
-//   tags.forEach(tag => tag.addEventListener("click", filterColor));
-// });
+.then(showData);
 
-searchInput.addEventListener('keyup', search);
-form.addEventListener('submit', search);
+searchInput.addEventListener('keyup', triggerSearch);
+form.addEventListener('submit', triggerSearch);
 wrapper.addEventListener('click', filterColor);
