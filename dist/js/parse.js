@@ -52,16 +52,21 @@ function initData(_data) {
 }
 
 function showData(_products) {
-  var list = _products.map(function (product, index) {
-    return "\n      <li>\n        <div class=\"card\">\n          <div class=\"flex-wrap\">\n            <div class=\"flex-item\"><img class=\"\" src=\"" + product.image + "\" alt=\"" + product.name + "\"></div>\n            <div class=\"flex-item\" style=\"color: rgb(" + product.color.rgb.join(",") + ");\">\n              <h2>" + product.name + "</h2>\n              <span><i class=\"fa fa-coffee\" aria-hidden=\"true\"></i> " + product.intensity + "</span>\n              <h3>" + product.flavor + "</h3>\n              <h5>" + product.color.names.map(function (name) {
-      return "<span class=\"tag\" data-color=\"" + name + "\">#" + name + "</span>";
-    }).join(' ') + "</h5>\n            </div>\n          </div>\n          <p>" + product.details.description + "<p>\n        </div>\n      </li>\n    ";
-  });
+  var content = "<p>No matching coffee found.</p>";
+  if (_products.length > 0) {
+    var list = _products.map(function (product, index) {
+      return "\n      <li>\n      <div class=\"card\">\n      <div class=\"flex-wrap\">\n      <div class=\"flex-item\"><img class=\"\" src=\"" + product.image + "\" alt=\"" + product.name + "\"></div>\n      <div class=\"flex-item\" style=\"color: rgb(" + product.color.rgb.join(",") + ");\">\n      <h2>" + product.name + "</h2>\n      <span><i class=\"fa fa-coffee\" aria-hidden=\"true\"></i> " + product.intensity + "</span>\n      <h3>" + product.flavor + "</h3>\n      <h5>" + product.color.names.map(function (name) {
+        return "<span class=\"tag\" data-color=\"" + name + "\">#" + name + "</span>";
+      }).join(' ') + "</h5>\n      </div>\n      </div>\n      <p>" + product.details.description + "<p>\n      </div>\n      </li>\n      ";
+    });
+    content = list.join('');
+  }
+
   wrapper.classList.remove("active");
-  wrapper.innerHTML = list.join('');
+  wrapper.innerHTML = content;
   setTimeout(function () {
     return wrapper.classList.add("active");
-  }, 300);
+  }, 100);
 }
 
 function triggerSearch(e) {

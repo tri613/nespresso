@@ -2,7 +2,7 @@ const products = [];
 const url = "dist/data.json";
 const add = (a, b) => a + b;
 const equalArray = (a, b) => a.every(item => b.includes(item)) && b.every(item => a.includes(item));
-    
+
 let keywordsCache = [];
 let delayTimer;
 
@@ -36,27 +36,32 @@ function initData(_data) {
 }
 
 function showData(_products) {
-  const list = _products.map((product, index) => {
-    return `
+  let content = `<p>No matching coffee found.</p>`;
+  if (_products.length > 0) {
+    const list = _products.map((product, index) => {
+      return `
       <li>
-        <div class="card">
-          <div class="flex-wrap">
-            <div class="flex-item"><img class="" src="${product.image}" alt="${product.name}"></div>
-            <div class="flex-item" style="color: rgb(${product.color.rgb.join(",")});">
-              <h2>${product.name}</h2>
-              <span><i class="fa fa-coffee" aria-hidden="true"></i> ${product.intensity}</span>
-              <h3>${product.flavor}</h3>
-              <h5>${product.color.names.map(name => `<span class="tag" data-color="${name}">#${name}</span>`).join(' ')}</h5>
-            </div>
-          </div>
-          <p>${product.details.description}<p>
-        </div>
+      <div class="card">
+      <div class="flex-wrap">
+      <div class="flex-item"><img class="" src="${product.image}" alt="${product.name}"></div>
+      <div class="flex-item" style="color: rgb(${product.color.rgb.join(",")});">
+      <h2>${product.name}</h2>
+      <span><i class="fa fa-coffee" aria-hidden="true"></i> ${product.intensity}</span>
+      <h3>${product.flavor}</h3>
+      <h5>${product.color.names.map(name => `<span class="tag" data-color="${name}">#${name}</span>`).join(' ')}</h5>
+      </div>
+      </div>
+      <p>${product.details.description}<p>
+      </div>
       </li>
-    `;
-  });
+      `;
+    });
+    content = list.join('');
+  }
+
   wrapper.classList.remove("active");
-  wrapper.innerHTML = list.join('');
-  setTimeout(() => wrapper.classList.add("active"), 300);
+  wrapper.innerHTML = content;
+  setTimeout(() => wrapper.classList.add("active"), 100);
 }
 
 function triggerSearch(e) {

@@ -52,11 +52,17 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0 auto;
-  .do-transition();
   opacity: 0;
   &.active {
+    .do-transition();
     opacity: 1;
   }
+
+  > p {
+    text-align: center;
+    color: #FFF;
+  }
+
   li {
     padding: 5px 10px;
     // border-top: 5px solid lighten(@accent, 10%);
@@ -64,6 +70,7 @@ ul {
       border-radius: 10px;
       background: #FFF;
       padding: 20px;
+      color: #000;
       h5 {
         margin: 0;
         .tag {

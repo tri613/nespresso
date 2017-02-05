@@ -41,11 +41,15 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0 auto;
-  transition: all 0.3s ease-in;
   opacity: 0;
 }
 ul.active {
+  transition: all 0.3s ease-in;
   opacity: 1;
+}
+ul > p {
+  text-align: center;
+  color: #FFF;
 }
 ul li {
   padding: 5px 10px;
@@ -54,6 +58,7 @@ ul li .card {
   border-radius: 10px;
   background: #FFF;
   padding: 20px;
+  color: #000;
 }
 ul li .card h5 {
   margin: 0;
