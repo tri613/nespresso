@@ -60,14 +60,12 @@ async function modifyProductInfo(i, node) {
 async function getColor(src) {
   const imageColors = await Jimp.read(src)
     .then(image => {
-      // return Jimp.intToRGBA(image.getPixelColor(13,12));
       const colors = [];
       image.scan(0, 0, image.bitmap.width, image.bitmap.height, (x, y, idx) => {
         const red   = image.bitmap.data[ idx + 0 ];
         const green = image.bitmap.data[ idx + 1 ];
         const blue  = image.bitmap.data[ idx + 2 ];
         const alpha = image.bitmap.data[ idx + 3 ];
-        // colors.push({r:red, g:green, b:blue, a:alpha});
         colors.push(red,green,blue,alpha);
       });
       return Uint8ClampedArray.from(colors);

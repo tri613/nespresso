@@ -5,10 +5,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var products = [];
 var url = "dist/data.json";
 var wrapper = document.querySelector("ul");
+var form = document.querySelector("form");
 var searchInput = document.querySelector("[name='search']");
 var tags = [];
-
-console.log(tags);
 
 function fetchData() {
   if (window.fetch) {
@@ -54,7 +53,8 @@ function showData(_products) {
 }
 
 function search(e) {
-  var keywords = this.value.trim().toLowerCase().split(' ');
+  e.preventDefault();
+  var keywords = searchInput.value.trim().toLowerCase().split(' ');
   var result = products.filter(function (product) {
     return keywords.some(function (keyword) {
       return product.name.toLowerCase().includes(keyword) || product.color.names.join(" ").includes(keyword);
@@ -85,4 +85,5 @@ fetchData().then(initData).then(showData);
 // });
 
 searchInput.addEventListener('keyup', search);
+form.addEventListener('submit', search);
 wrapper.addEventListener('click', filterColor);

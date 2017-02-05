@@ -1,10 +1,9 @@
 const products = [];
 const url = "dist/data.json";
 const wrapper = document.querySelector("ul");
+const form = document.querySelector("form");
 const searchInput = document.querySelector("[name='search']");
 const tags = [];
-
-console.log(tags);
 
 function fetchData() {
   if (window.fetch) {
@@ -58,7 +57,8 @@ function showData(_products) {
 }
 
 function search(e) {
-  const keywords = this.value.trim().toLowerCase().split(' ');
+  e.preventDefault();
+  const keywords = searchInput.value.trim().toLowerCase().split(' ');
   const result = products.filter(product => {
     return keywords.some(keyword => product.name.toLowerCase().includes(keyword)
                                     || product.color.names.join(" ").includes(keyword));
@@ -84,4 +84,5 @@ fetchData()
 // });
 
 searchInput.addEventListener('keyup', search);
+form.addEventListener('submit', search);
 wrapper.addEventListener('click', filterColor);
