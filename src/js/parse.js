@@ -87,6 +87,7 @@ function search() {
 function filterColor(e) {
   if (e.target.className == "tag") {
     const color = e.target.dataset.color;
+    searchInput.value = color;
     const result = products.filter(product => product.color.names.some(name => name === color));
     showData(result);
   }

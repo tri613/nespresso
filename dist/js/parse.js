@@ -94,6 +94,7 @@ function filterColor(e) {
   if (e.target.className == "tag") {
     (function () {
       var color = e.target.dataset.color;
+      searchInput.value = color;
       var result = products.filter(function (product) {
         return product.color.names.some(function (name) {
           return name === color;
