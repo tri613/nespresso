@@ -1,7 +1,10 @@
 const products = [];
+const url = "dist/data.json";
 const wrapper = document.querySelector("ul");
 const searchInput = document.querySelector("[name='search']");
-const url = "dist/data.json";
+const tags = [];
+
+console.log(tags);
 
 function fetchData() {
   if (window.fetch) {
@@ -42,26 +45,43 @@ function showData(_products) {
             <h2>${product.name}</h2>
             <span><i class="fa fa-coffee" aria-hidden="true"></i> ${product.intensity}</span>
             <h3>${product.flavor}</h3>
-            <h5>${product.color.names.map(name => `#${name}`).join(' ')}</h5>
+            <h5>${product.color.names.map(name => `<span class="tag" data-color="${name}">#${name}</span>`).join(' ')}</h5>
           </div>
         </div>
-        <!-- <hr style="background-color: rgb(${product.color.rgb.join(",")});" /> -->
         <p>${product.details.description}<p>
       </div>
     </li>
   `});
+  wrapper.classList.add("active");
   wrapper.innerHTML = list.join('');
+  // setTimeout(() => wrapper.classList.add("active"), 300);
 }
 
 function search(e) {
-  const keyword = this.value.trim().toLowerCase();
-  const result = products.filter(product => product.name.toLowerCase().includes(keyword) ||
-                                            product.color.names.join(" ").includes(keyword));
+  const keywords = this.value.trim().toLowerCase().split(' ');
+  const result = products.filter(product => {
+    return keywords.some(keyword => product.name.toLowerCase().includes(keyword)
+                                    || product.color.names.join(" ").includes(keyword));
+  });
   showData(result);
+}
+
+function filterColor(e) {
+  if (e.target.className == "tag") {
+    const color = e.target.dataset.color;
+    const result = products.filter(product => product.color.names.some(name => name === color));
+    showData(result);
+  }
 }
 
 fetchData()
 .then(initData)
-.then(showData);
+.then(showData)
+// .then(res => {
+//   const nodes = Array.from(document.querySelectorAll(".tag"));
+//   tags.push(...nodes);
+//   tags.forEach(tag => tag.addEventListener("click", filterColor));
+// });
 
 searchInput.addEventListener('keyup', search);
+wrapper.addEventListener('click', filterColor);

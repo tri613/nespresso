@@ -1,6 +1,10 @@
 @accent: #6b6562;
 @butter: #c5a578;
 
+.do-transition(@duration:0.3s) {
+  transition: all @duration ease-in;
+}
+
 body {
   font-family: 'Libre Baskerville', sans-serif;
   background-color: @butter;
@@ -48,6 +52,11 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0 auto;
+  .do-transition();
+  opacity: 0;
+  &.active {
+    opacity: 1;
+  }
   li {
     padding: 5px 10px;
     // border-top: 5px solid lighten(@accent, 10%);
@@ -55,6 +64,15 @@ ul {
       border-radius: 10px;
       background: #FFF;
       padding: 20px;
+      h5 {
+        margin: 0;
+        .tag {
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 }
@@ -66,9 +84,7 @@ ul {
     align-self: center;
     margin-right: 15px;
   }
-  h5 {
-    margin: 0;
-  }
+
 }
 
 hr {

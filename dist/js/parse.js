@@ -3,9 +3,12 @@
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var products = [];
+var url = "dist/data.json";
 var wrapper = document.querySelector("ul");
 var searchInput = document.querySelector("[name='search']");
-var url = "dist/data.json";
+var tags = [];
+
+console.log(tags);
 
 function fetchData() {
   if (window.fetch) {
@@ -42,20 +45,44 @@ function add(a, b) {
 function showData(_products) {
   var list = _products.map(function (product, index) {
     return "\n    <li>\n      <div class=\"card\">\n        <div class=\"flex-wrap\">\n          <div class=\"flex-item\"><img class=\"\" src=\"" + product.image + "\" alt=\"" + product.name + "\"></div>\n          <div class=\"flex-item\" style=\"color: rgb(" + product.color.rgb.join(",") + ");\">\n            <h2>" + product.name + "</h2>\n            <span><i class=\"fa fa-coffee\" aria-hidden=\"true\"></i> " + product.intensity + "</span>\n            <h3>" + product.flavor + "</h3>\n            <h5>" + product.color.names.map(function (name) {
-      return "#" + name;
-    }).join(' ') + "</h5>\n          </div>\n        </div>\n        <!-- <hr style=\"background-color: rgb(" + product.color.rgb.join(",") + ");\" /> -->\n        <p>" + product.details.description + "<p>\n      </div>\n    </li>\n  ";
+      return "<span class=\"tag\" data-color=\"" + name + "\">#" + name + "</span>";
+    }).join(' ') + "</h5>\n          </div>\n        </div>\n        <p>" + product.details.description + "<p>\n      </div>\n    </li>\n  ";
   });
+  wrapper.classList.add("active");
   wrapper.innerHTML = list.join('');
+  // setTimeout(() => wrapper.classList.add("active"), 300);
 }
 
 function search(e) {
-  var keyword = this.value.trim().toLowerCase();
+  var keywords = this.value.trim().toLowerCase().split(' ');
   var result = products.filter(function (product) {
-    return product.name.toLowerCase().includes(keyword) || product.color.names.join(" ").includes(keyword);
+    return keywords.some(function (keyword) {
+      return product.name.toLowerCase().includes(keyword) || product.color.names.join(" ").includes(keyword);
+    });
   });
   showData(result);
 }
 
+function filterColor(e) {
+  if (e.target.className == "tag") {
+    (function () {
+      var color = e.target.dataset.color;
+      var result = products.filter(function (product) {
+        return product.color.names.some(function (name) {
+          return name === color;
+        });
+      });
+      showData(result);
+    })();
+  }
+}
+
 fetchData().then(initData).then(showData);
+// .then(res => {
+//   const nodes = Array.from(document.querySelectorAll(".tag"));
+//   tags.push(...nodes);
+//   tags.forEach(tag => tag.addEventListener("click", filterColor));
+// });
 
 searchInput.addEventListener('keyup', search);
+wrapper.addEventListener('click', filterColor);
