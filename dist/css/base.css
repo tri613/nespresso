@@ -1,3 +1,9 @@
+html,
+body {
+  -webkit-overflow-scrolling: touch !important;
+  overflow: auto !important;
+  height: 100% !important;
+}
 body {
   font-family: 'Libre Baskerville', sans-serif;
   background-color: #c5a578;
@@ -19,7 +25,7 @@ header h1 {
 .body-wrapper {
   padding-top: 63px;
   padding-bottom: 5px;
-  min-height: 100vh;
+  min-height: calc(37vh);
 }
 form .input-wrap {
   border-radius: 20px;

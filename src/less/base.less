@@ -1,10 +1,15 @@
 @accent: #6b6562;
 @butter: #c5a578;
+@top: 63px;
 
 .do-transition(@duration:0.3s) {
   transition: all @duration ease-in;
 }
-
+html,body {
+    -webkit-overflow-scrolling : touch !important;
+    overflow: auto !important;
+    height: 100% !important;
+}
 body {
   font-family: 'Libre Baskerville', sans-serif;
   background-color: @butter;
@@ -26,9 +31,9 @@ header {
 }
 
 .body-wrapper {
-  padding-top: 63px;
+  padding-top: @top;
   padding-bottom: 5px;
-  min-height: 100vh;
+  min-height: calc(100vh - @top);
 }
 
 form {
