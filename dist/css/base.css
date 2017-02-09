@@ -18,7 +18,7 @@ header {
   background-color: #6b6562;
   text-align: center;
   padding: 10px 0;
-  color: #FFF;
+  color: #fffef7;
 }
 header h1 {
   margin: 0 auto;
@@ -52,7 +52,7 @@ form .input-wrap input {
   margin-left: 10px;
   background-color: transparent;
   width: 100%;
-  color: #FFF;
+  color: #fffef7;
 }
 ul {
   list-style-type: none;
@@ -66,16 +66,16 @@ ul.active {
 }
 ul > p {
   text-align: center;
-  color: #FFF;
+  color: #fffef7;
 }
 ul li {
   padding: 5px 10px;
 }
 ul li .card {
   border-radius: 10px;
-  background: #FFF;
+  background: #fffef7;
   padding: 20px;
-  color: #000;
+  color: #181717;
 }
 ul li .card h5 {
   margin: 0;
@@ -97,6 +97,12 @@ ul li .card h5 .tag:hover {
   -ms-grid-row-align: center;
   align-self: center;
   margin-right: 15px;
+}
+.clear-btn {
+  cursor: pointer;
+}
+.clear-btn.hidden {
+  display: none;
 }
 hr {
   height: 3px;

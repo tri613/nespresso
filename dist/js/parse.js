@@ -22,6 +22,7 @@ var delayTimer = void 0;
 var wrapper = document.querySelector("ul");
 var form = document.querySelector("form");
 var searchInput = document.querySelector("[name='search']");
+var clearBtn = document.querySelector(".clear-btn");
 
 function fetchData() {
   if (window.fetch) {
@@ -89,12 +90,14 @@ function search() {
   });
   keywordsCache = keywords;
   showData(result);
+  toggleClearBtn();
 }
 
 function filterColor(e) {
   if (e.target.className == "tag") {
     (function () {
       var color = e.target.dataset.color;
+      keywordsCache = [color];
       searchInput.value = color;
       var result = products.filter(function (product) {
         return product.color.names.some(function (name) {
@@ -102,7 +105,16 @@ function filterColor(e) {
         });
       });
       showData(result);
+      toggleClearBtn();
     })();
+  }
+}
+
+function toggleClearBtn() {
+  if (searchInput.value == "" || searchInput.value == undefined) {
+    clearBtn.classList.add("hidden");
+  } else {
+    clearBtn.classList.remove("hidden");
   }
 }
 
@@ -111,3 +123,7 @@ fetchData().then(initData).then(showData);
 searchInput.addEventListener('keyup', triggerSearch);
 form.addEventListener('submit', triggerSearch);
 wrapper.addEventListener('click', filterColor);
+clearBtn.addEventListener('click', function (e) {
+  searchInput.value = "";
+  search(e);
+});

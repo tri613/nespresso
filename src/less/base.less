@@ -1,5 +1,7 @@
 @accent: #6b6562;
 @butter: #c5a578;
+@cream: #fffef7;
+@black: #181717;
 @top: 63px;
 
 .do-transition(@duration:0.3s) {
@@ -25,7 +27,7 @@ header {
   background-color: @accent;
   text-align: center;
   padding: 10px 0;
-  color: #FFF;
+  color: @cream;
   h1 {
     margin: 0 auto;
     font-size: 1.5em;
@@ -59,7 +61,7 @@ form {
       margin-left: 10px;
       background-color: transparent;
       width: 100%;
-      color: #FFF;
+      color: @cream;
     }
   }
 }
@@ -76,17 +78,16 @@ ul {
 
   > p {
     text-align: center;
-    color: #FFF;
+    color: @cream;
   }
 
   li {
     padding: 5px 10px;
-    // border-top: 5px solid lighten(@accent, 10%);
     .card {
       border-radius: 10px;
-      background: #FFF;
+      background: @cream;
       padding: 20px;
-      color: #000;
+      color: @black;
       h5 {
         margin: 0;
         .tag {
@@ -107,7 +108,13 @@ ul {
     align-self: center;
     margin-right: 15px;
   }
+}
 
+.clear-btn {
+  cursor: pointer;
+  &.hidden {
+    display: none;
+  }
 }
 
 hr {

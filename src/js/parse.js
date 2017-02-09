@@ -10,6 +10,7 @@ let delayTimer;
 const wrapper = document.querySelector("ul");
 const form = document.querySelector("form");
 const searchInput = document.querySelector("[name='search']");
+const clearBtn = document.querySelector(".clear-btn");
 
 function fetchData() {
   if (window.fetch) {
@@ -83,21 +84,36 @@ function search() {
   });
   keywordsCache = keywords;
   showData(result);
+  toggleClearBtn();
 }
 
 function filterColor(e) {
   if (e.target.className == "tag") {
     const color = e.target.dataset.color;
+    keywordsCache = [color];
     searchInput.value = color;
     const result = products.filter(product => product.color.names.some(name => name === color));
     showData(result);
+    toggleClearBtn();
+  }
+}
+
+function toggleClearBtn() {
+  if (searchInput.value == "" || searchInput.value == undefined) {
+    clearBtn.classList.add("hidden");
+  } else {
+    clearBtn.classList.remove("hidden");
   }
 }
 
 fetchData()
-.then(initData)
-.then(showData);
+  .then(initData)
+  .then(showData);
 
 searchInput.addEventListener('keyup', triggerSearch);
 form.addEventListener('submit', triggerSearch);
 wrapper.addEventListener('click', filterColor);
+clearBtn.addEventListener('click', e => {
+  searchInput.value = "";
+  search(e);
+});
