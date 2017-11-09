@@ -12,7 +12,8 @@
     "cheerio": "^0.22.0",
     "get-rgba-palette": "^2.0.1",
     "jimp": "^0.2.27",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "vue-material": "^0.8.1"
   },
   "devDependencies": {}
 }
