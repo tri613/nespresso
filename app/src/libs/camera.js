@@ -22,5 +22,10 @@ export function startCapture(videoElement) {
 	initializeMedia();
 
 	return navigator.mediaDevices.getUserMedia({ video: true })
-		.then(stream => videoElement.objectSrc = stream);
+		.then(stream => {
+			// videoElement.srcObject = stream;
+			videoElement.src = URL.createObjectURL(stream);
+			videoElement.play();
+
+		});
 }
