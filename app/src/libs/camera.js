@@ -1,5 +1,3 @@
-import '@/../node_modules/tracking/build/tracking-min';
-
 function initializeMedia() {
 	if (!('mediaDevices' in navigator)) {
 		navigator.mediaDevices = {};
@@ -20,14 +18,9 @@ function initializeMedia() {
 	}
 }
 
-export function startCapture() {
+export function startCapture(videoElement) {
 	initializeMedia();
+
 	return navigator.mediaDevices.getUserMedia({ video: true })
-		// .then( stream {
-		// 	videoPlayer.srcObject = stream;
-		// 	videoPlayer.style.display = 'block';
-		// })
-		// .catch(function (err) {
-		// 	imagePickerArea.style.display = 'block';
-		// });
+		.then(stream => videoElement.objectSrc = stream);
 }
