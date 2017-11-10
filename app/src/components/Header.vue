@@ -1,14 +1,13 @@
 <template>
   <header>
-    <md-toolbar class="md-dense">
+    <md-toolbar class="md-dense" id="app-header">
       <md-button class="md-icon-button" @click="$refs.leftSidenav.toggle()">
         <md-icon>menu</md-icon>
       </md-button>
-
       <h1 class="md-title">Find my Nespresso</h1>
     </md-toolbar>
-
-    <md-sidenav class="md-left" ref="leftSidenav" :md-swipeable="true">
+    
+    <md-sidenav class="md-left" ref="leftSidenav" :md-swipeable="true" :md-swipe-distance="30">
       <md-toolbar class="md-transparent">
         <h2 class="md-title">Find my Nespresso</h2>
       </md-toolbar>
@@ -28,3 +27,15 @@
     </md-sidenav>
   </header>
 </template>
+
+<style lang="scss">
+
+#app-header {
+  position: fixed;
+  width: 100%;
+  z-index: 51;
+  top: 0px;
+}
+
+</style>
+

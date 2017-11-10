@@ -6,12 +6,12 @@ import router from './router'
 
 Vue.use(VueMaterial)
 
-Vue.material.registerTheme('default', {
-  primary: 'brown',
-  accent: 'red',
-  warn: 'teal',
-  background: 'white'
-})
+// Vue.material.registerTheme('default', {
+//   primary: 'brown',
+//   accent: 'red',
+//   warn: 'blue',
+//   background: 'white'
+// })
 
 new Vue({
   el: '#app',

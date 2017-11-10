@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import AppScan from '#/scan/Main'
-import AppList from '#/list/Main'
+import AppScan from '#/scan/Scan'
+import AppList from '#/list/List'
 
 Vue.use(VueRouter)
 

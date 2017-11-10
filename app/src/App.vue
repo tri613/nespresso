@@ -15,7 +15,11 @@ export default {
 </script>
 
 <style lang="scss">
+$app-header-height: 48px;
+
 body {
+  width: 100vw;
+  overflow-x: hidden;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif;
 }
 
@@ -24,6 +28,8 @@ body {
 }
 
 .app-page-wrapper {
-  background-color: #d6bea0;
+  // padding-top: $app-header-height;
+  // background-color: #ece6dd;
+  // min-height: calc(100vh - 48px);
 }
 </style>
