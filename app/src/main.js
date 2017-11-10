@@ -9,7 +9,7 @@ Vue.use(VueMaterial)
 Vue.material.registerTheme('default', {
   primary: 'brown',
   accent: 'red',
-  warn: 'indigo',
+  warn: 'teal',
   background: 'white'
 })
 
