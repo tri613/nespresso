@@ -2,14 +2,17 @@
 <div id="app">
   <app-header></app-header>
   <router-view class="app-page-wrapper"></router-view>
+  <app-footer></app-footer>
 </div>
 </template>
 
 <script>
 import AppHeader from '#/Header.vue'
+import AppFooter from '#/Footer.vue'
 export default {
   components: {
-    AppHeader
+    AppHeader,
+    AppFooter
   }
 }
 </script>
@@ -28,8 +31,8 @@ body {
 }
 
 .app-page-wrapper {
-  // padding-top: $app-header-height;
+  padding-top: $app-header-height;
   // background-color: #ece6dd;
-  // min-height: calc(100vh - 48px);
+  min-height: calc(100vh - 48px);
 }
 </style>

@@ -18,8 +18,12 @@
     </md-layout>
 
     <md-snackbar :md-duration="Infinity" ref="snackbar">
-      <span>Oops! Seems like you don't have access to a camera.</span>
-      <md-button class="md-accent" @click="$refs.snackbar.close()">Got it</md-button>
+      <md-layout md-gutter="16">
+        <md-layout md-flex="70" style="margin-right: 1rem">Seems like you don't have access to camera.</md-layout>
+        <md-layout :md-flex="true" md-vertical-align="center">
+          <md-button class="md-raised md-accent" @click="$refs.snackbar.close()" style="margin-left: -16px;">Got it</md-button>
+        </md-layout>
+      </md-layout>
     </md-snackbar>
   </div>
 </template>
@@ -93,7 +97,6 @@ export default {
   .app-camera-container {
     position: relative;
     width: 100%;
-    border: 1px solid red;
     overflow: hidden;
   }
 

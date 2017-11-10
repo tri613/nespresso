@@ -1,18 +1,16 @@
 <template>
   <div>
-      <md-whiteframe id="app-search-bar">
-        <md-layout md-gutter="8" md-align="center" md-vertical-align="center">
-            <md-layout md-flex="80">
-              <md-input-container :md-clearable="true">
-                <md-icon>search</md-icon>
-                <label>coffee name or color</label>
-                <md-input type="text" v-model="keywords"></md-input>
-              </md-input-container>
-            </md-layout>
+    <md-layout id="app-search-bar" md-gutter="8" md-align="center" md-vertical-align="center">
+        <md-layout md-flex="80">
+          <md-input-container :md-clearable="true">
+            <md-icon>search</md-icon>
+            <label>coffee name or color</label>
+            <md-input type="text" v-model="keywords"></md-input>
+          </md-input-container>
         </md-layout>
-      </md-whiteframe>
+    </md-layout>
     
-    <div class="container" style="margin-top: 3rem;">
+    <div class="container">
       <md-card :md-with-hover="true" v-for="(coffee, index) in filteredCoffees" :key="index">
         <md-card-header>
           <md-card-header-text>
@@ -100,6 +98,6 @@ export default {
   left: 0;
   z-index: 50;
   background-color: #FFF;
+  box-shadow: 0 0 10px 1px #9e9e9e;
 }
 </style>
-
