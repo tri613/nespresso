@@ -1,12 +1,15 @@
 var path = require('path')
 var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+var CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    publicPath: './',
+    filename: 'build-[hash].js'
   },
   module: {
     rules: [
@@ -69,6 +72,13 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: path.join(__dirname, 'index.html'),
+      inject: true,
+    }),
+  ],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
@@ -80,7 +90,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    // overlay: true
   },
   performance: {
     hints: false
@@ -97,6 +107,14 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
+    new CleanWebpackPlugin(['dist']),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, './assets'),
+        to: path.resolve(__dirname, './dist/assets'),
+        ignore: ['.*']
+      }
+    ]),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
@@ -105,6 +123,16 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    })
+  ])
+}
+
+if (process.env.NODE_ENV === 'development') {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
     })
   ])
 }
