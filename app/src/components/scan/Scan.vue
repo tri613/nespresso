@@ -11,7 +11,7 @@
     <!--  @click="isTracking = !isTracking" -->
     <md-layout md-align="center" md-vertical-align="center">
       <md-button class="md-raised md-accent" 
-        @click="$refs.snackbar.open()"
+        @click="isTracking = !isTracking"
       >
         {{ isTracking ? "Stop Tracking" : "Start Tracking" }}
       </md-button>
@@ -66,7 +66,7 @@ export default {
       const context = this.$refs.canvas.getContext('2d');
 			const { width, height } = this.$refs.canvas;
       
-      track.init();
+      track.init(this.$refs.video.id);
       track.task.stop();
 
       track.tracker.on('track', event => {
@@ -89,6 +89,8 @@ export default {
   },
   beforeDestroy() {
     this.$refs.snackbar.close();
+    this.isTracking = false;
+    track.task.stop();
   }
 }
 </script>
@@ -98,6 +100,15 @@ export default {
     position: relative;
     width: 100%;
     overflow: hidden;
+  }
+
+  .app-camera-video {
+    position: relative;
+    z-index: 2;
+  }
+
+  .app-camera-canvas {
+    z-index: 3;
   }
 
   .app-camera-placeholder,

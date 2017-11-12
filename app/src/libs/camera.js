@@ -34,11 +34,11 @@ export const camera = {
 export const track = {
 	tracker: null,
 	task: null,
-	init() {
+	init(id) {
 		this.tracker = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
 		this.tracker.setMinDimension(5);
 		
-		this.task = tracking.track(`#${this.$refs.video.id}`, this.tracker);
+		this.task = tracking.track(`#${id}`, this.tracker);
 		this.task.stop();
 	}
 }
