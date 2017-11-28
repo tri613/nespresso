@@ -10,12 +10,7 @@
     
     <div class="">
       <md-button class="md-raised md-accent" 
-<<<<<<< HEAD
-        @click="isTracking = !isTracking"
-      >
-=======
         @click="notSupported = !notSupported">
->>>>>>> 38775814af4475f677acd41732edb11a6c641fcf
         {{ isTracking ? "Stop Tracking" : "Start Tracking" }}
       </md-button>
     </div>

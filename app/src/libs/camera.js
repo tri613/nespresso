@@ -28,24 +28,3 @@ export const camera = {
 			});
 	}
 };
-
-export const track = {
-	tracker: null,
-	task: null,
-<<<<<<< HEAD
-	init(id) {
-		this.tracker = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
-=======
-	init() {
-		this.tracker = new tracking.ColorTracker();
->>>>>>> 38775814af4475f677acd41732edb11a6c641fcf
-		this.tracker.setMinDimension(5);
-		
-		this.task = tracking.track(`#${id}`, this.tracker);
-		this.task.stop();
-	},
-	registerColors() {
-		tracking.ColorTracker.registerColor('')
-	}
-}
-

@@ -8,13 +8,8 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-<<<<<<< HEAD
-    // publicPath: '/',
-    filename: 'build-[hash].js'
-=======
     filename: 'js/build-[hash].js',
     chunkFilename: 'js/[name]-[chunkhash].js',
->>>>>>> 38775814af4475f677acd41732edb11a6c641fcf
   },
   module: {
     rules: [
