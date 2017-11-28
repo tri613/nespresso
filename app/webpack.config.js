@@ -99,12 +99,7 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
-<<<<<<< HEAD
-  module.exports.output.publicPath = './'
-
-=======
   module.exports.output.publicPath = "./"
->>>>>>> 38775814af4475f677acd41732edb11a6c641fcf
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
@@ -134,12 +129,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 if (process.env.NODE_ENV === 'development') {
-<<<<<<< HEAD
-  module.exports.output.publicPath = '/'
-  
-=======
   module.exports.output.publicPath = "/"
->>>>>>> 38775814af4475f677acd41732edb11a6c641fcf
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
