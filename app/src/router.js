@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import AppScan from '#/scan/Scan'
-import AppList from '#/list/List'
+
+const AppScan = () => import(/* webpackChunkName: "scan" */ '#/scan/Scan')
+const AppList = () => import(/* webpackChunkName: "list" */ '#/list/List')
 
 Vue.use(VueRouter)
 

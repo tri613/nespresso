@@ -7,8 +7,10 @@
 </template>
 
 <script>
+import './../assets/base.scss'
 import AppHeader from '#/Header.vue'
 import AppFooter from '#/Footer.vue'
+
 export default {
   components: {
     AppHeader,
@@ -18,8 +20,6 @@ export default {
 </script>
 
 <style lang="scss">
-$app-header-height: 48px;
-
 body {
   width: 100vw;
   overflow-x: hidden;
@@ -31,7 +31,7 @@ body {
 }
 
 .app-page-wrapper {
-  padding-top: $app-header-height;
+  padding-top: 48px;
   // background-color: #ece6dd;
   min-height: calc(100vh - 48px);
 }
