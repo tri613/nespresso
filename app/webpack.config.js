@@ -8,8 +8,8 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: './',
-    filename: 'build-[hash].js'
+    filename: 'js/build-[hash].js',
+    chunkFilename: 'js/[name]-[chunkhash].js',
   },
   module: {
     rules: [
@@ -99,6 +99,7 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
+  module.exports.output.publicPath = "./"
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
@@ -128,6 +129,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 if (process.env.NODE_ENV === 'development') {
+  module.exports.output.publicPath = "/"
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {

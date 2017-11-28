@@ -1,24 +1,13 @@
 <template>
-  <div>
-    <md-layout id="app-search-bar" md-gutter="8" md-align="center" md-vertical-align="center">
-        <md-layout md-flex="80">
-          <md-input-container :md-clearable="true">
-            <md-icon>search</md-icon>
-            <label>coffee name or color</label>
-            <md-input type="text" v-model="keywords"></md-input>
-          </md-input-container>
-        </md-layout>
-    </md-layout>
-    
-    <div class="container">
+  <div class="container">
+    <div class="card-wrapper">
       <md-card :md-with-hover="true" v-for="(coffee, index) in filteredCoffees" :key="index">
         <md-card-header>
           <md-card-header-text>
             <div class="md-title">{{ coffee.name }}</div>
-            <!-- <div class="md-subhead">{{ coffee.flavor }}</div> -->
-            <span class="md-subhead">
+            <div class="md-subhead">
               <md-icon>local_cafe</md-icon> x {{ coffee.intensity }}
-            </span>
+            </div>
           </md-card-header-text>
           <md-card-media>
             <img :src="coffee.image" :alt="coffee.name">
@@ -33,17 +22,22 @@
         </md-card-content>
       </md-card>
     </div>
+    <p v-if="!filteredCoffees.length">
+      No matching coffee found.
+    </p>
   </div>
 </template>
 
 <script>
 import _ from 'lodash/core';
-import coffees from '@/../assets/coffee.json';
+import { EventBus } from '@/bus';
 
 export default {
+  created() {
+    EventBus.$on('input', value => this.keywords = value);
+  },
   data() {
     return {
-      coffees,
       keywords: ''
     }
   },
@@ -54,10 +48,13 @@ export default {
       }
     },
     writeToSearch(tag) {
-      this.keywords = tag;
+      EventBus.$emit('click-tag', tag);
     }
   },
   computed: {
+    coffees() {
+      return EventBus.coffees;
+    },
     sortedCoffees() {
       const intensityGroup = this.coffees.reduce((result, current) => {
         result[current.intensity] = result[current.intensity] || [];
@@ -81,13 +78,26 @@ export default {
       const keywords = this.keywords.trim().split(/\s+/);
       return this.sortedCoffees.filter(coffee => keywords.some(term => coffee.name.includes(term) || coffee.color.names.some(tag => tag.includes(term))))
     }
+  },
+  watch: {
+    filteredCoffees() {
+      window.scrollTo(0, 0);
+    }
   }
 }
 </script>
 
 <style lang="scss">
+.card-wrapper {
+  padding-top: 1rem;
+}
+
 .md-card {
   margin-bottom: 1rem;
+  
+  .md-subhead {
+    margin-top: .5rem;
+  }
 }
 
 #app-search-bar {

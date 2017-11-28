@@ -1,5 +1,3 @@
-import '@/../node_modules/tracking/build/tracking-min';
-
 export const camera = {
 	initializeMedia() {
 		if (!('mediaDevices' in navigator)) {
@@ -35,11 +33,14 @@ export const track = {
 	tracker: null,
 	task: null,
 	init() {
-		this.tracker = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
+		this.tracker = new tracking.ColorTracker();
 		this.tracker.setMinDimension(5);
 		
 		this.task = tracking.track(`#${this.$refs.video.id}`, this.tracker);
 		this.task.stop();
+	},
+	registerColors() {
+		tracking.ColorTracker.registerColor('')
 	}
 }
 

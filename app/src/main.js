@@ -1,17 +1,18 @@
 import Vue from 'vue'
 import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.css'
+import 'vue-material/dist/vue-material.min.css'
+
 import App from './App.vue'
 import router from './router'
 
 Vue.use(VueMaterial)
 
-Vue.material.registerTheme('default', {
-  primary: 'black',
-  accent: 'red',
-  warn: 'blue',
-  background: 'white'
-})
+// Vue.material.registerTheme('default', {
+//   primary: 'black',
+//   accent: 'red',
+//   warn: 'blue',
+//   background: 'white'
+// })
 
 new Vue({
   el: '#app',
