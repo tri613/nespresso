@@ -65,13 +65,6 @@ export default {
   },
   methods: {
     initTracker() {
-<<<<<<< HEAD
-      const context = this.$refs.canvas.getContext('2d');
-			const { width, height } = this.$refs.canvas;
-      
-      track.init(this.$refs.video.id);
-      track.task.stop();
-=======
       this.registerColors();
       this.tracker = new tracking.ColorTracker(this.coffee.map(c => c.color.names[0]));
       this.tracker.setMinDimension(20);
@@ -79,7 +72,6 @@ export default {
 
       const context = this.$refs.canvas.getContext("2d");
       const { width, height } = this.$refs.canvas;
->>>>>>> 38775814af4475f677acd41732edb11a6c641fcf
 
       this.tracker.on("track", event => {
         context.clearRect(0, 0, width, height);
@@ -116,12 +108,6 @@ export default {
       );
     }
   },
-<<<<<<< HEAD
-  beforeDestroy() {
-    this.$refs.snackbar.close();
-    this.isTracking = false;
-    track.task.stop();
-=======
   computed: {
     coffees() {
       return EventBus.coffees;
@@ -129,42 +115,17 @@ export default {
   },
   components: {
     AppSnackbar
->>>>>>> 38775814af4475f677acd41732edb11a6c641fcf
   }
 };
 </script>
 
 <style lang="scss" scoped>
-<<<<<<< HEAD
-  .app-camera-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .app-camera-video {
-    position: relative;
-    z-index: 2;
-  }
-
-  .app-camera-canvas {
-    z-index: 3;
-  }
-
-  .app-camera-placeholder,
-  .app-camera-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-=======
 .app-camera-container {
   position: relative;
   width: 100%;
   overflow: hidden;
   
 }
->>>>>>> 38775814af4475f677acd41732edb11a6c641fcf
 
 .app-camera-placeholder,
 .app-camera-canvas {
