@@ -7,19 +7,21 @@
 </template>
 
 <script>
-import './../assets/base.scss'
-import AppHeader from '#/Header.vue'
-import AppFooter from '#/Footer.vue'
+import AppHeader from "#/Header.vue";
+import AppFooter from "#/Footer.vue";
 
 export default {
   components: {
     AppHeader,
     AppFooter
   }
-}
+};
 </script>
 
 <style lang="scss">
+
+@import './assets/base.scss';
+
 body {
   width: 100vw;
   overflow-x: hidden;

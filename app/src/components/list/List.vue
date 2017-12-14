@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <div class="card-wrapper">
-      <md-card :md-with-hover="true" v-for="(coffee, index) in filteredCoffees" :key="index">
+      <md-card 
+        md-with-hover
+        v-for="(coffee, index) in filteredCoffees" 
+        :key="index"
+        :style="{ backgroundColor: colorStyle(coffee.color.rgb)}"
+        >
         <md-card-header>
           <md-card-header-text>
             <div class="md-title">{{ coffee.name }}</div>
@@ -29,26 +34,26 @@
 </template>
 
 <script>
-import _ from 'lodash/core';
-import { EventBus } from '@/bus';
+import _ from "lodash/core";
+import { EventBus } from "@/bus";
 
 export default {
   created() {
-    EventBus.$on('input', value => this.keywords = value);
+    EventBus.$on("input", value => (this.keywords = value));
   },
   data() {
     return {
-      keywords: ''
-    }
+      keywords: ""
+    };
   },
   methods: {
-    colorStyle(rgb) {
+    colorStyle(rgb, transparency = 1) {
       return {
-        color: `rgb(${rgb.join(',')})`
-      }
+        color: `rgba(${rgb.join(",")}, ${transparency})`
+      };
     },
     writeToSearch(tag) {
-      EventBus.$emit('click-tag', tag);
+      EventBus.$emit("click-tag", tag);
     }
   },
   computed: {
@@ -63,8 +68,10 @@ export default {
       }, {});
 
       const flatten = [];
-      for (let key in intensityGroup) {
-        const group = intensityGroup[key].sort((a, b) => a.name <= b.name ? -1 : 1);
+      for (const key in intensityGroup) {
+        const group = intensityGroup[key].sort(
+          (a, b) => (a.name <= b.name ? -1 : 1)
+        );
         flatten.push(...group);
       }
 
@@ -76,7 +83,13 @@ export default {
       }
 
       const keywords = this.keywords.trim().split(/\s+/);
-      return this.sortedCoffees.filter(coffee => keywords.some(term => coffee.name.includes(term) || coffee.color.names.some(tag => tag.includes(term))))
+      return this.sortedCoffees.filter(coffee =>
+        keywords.some(
+          term =>
+            coffee.name.includes(term) ||
+            coffee.color.names.some(tag => tag.includes(term))
+        )
+      );
     }
   },
   watch: {
@@ -84,7 +97,7 @@ export default {
       window.scrollTo(0, 0);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -94,9 +107,9 @@ export default {
 
 .md-card {
   margin-bottom: 1rem;
-  
+
   .md-subhead {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -104,10 +117,14 @@ export default {
   width: 100%;
   position: -webkit-sticky;
   position: sticky;
-  top: 48px; 
+  top: 48px;
   left: 0;
   z-index: 50;
-  background-color: #FFF;
+  background-color: #fff;
   box-shadow: 0 0 10px 1px #9e9e9e;
+}
+
+.md-card-header .md-card-media img {
+  object-fit: none;
 }
 </style>

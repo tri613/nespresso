@@ -7,23 +7,18 @@
 
 <script>
 export default {
-  name: 'NoCamSnackbar',
+  name: "NoCamSnackbar",
   props: {
     open: {
-      default: false,
+      default: false
     }
   },
   data: () => ({
     showSnackbar: true
   }),
   methods: {
-  },
-  watch: {
-    open(newValue) {
-      console.log('snackbar', newValue);
-    }
-  },
-}
+  }
+};
 </script>
 
 <style>
