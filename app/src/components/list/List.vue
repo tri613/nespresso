@@ -101,15 +101,11 @@ export default {
 </script>
 
 <style lang="scss">
-.card-wrapper {
-  padding-top: 1rem;
-}
-
 .md-card {
   margin-bottom: 1rem;
 
   .md-subhead {
-    margin-top: 0.5rem;
+    margin-top: .5rem !important;
   }
 }
 

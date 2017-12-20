@@ -1,5 +1,7 @@
 export const camera = {
-	initializeMedia() {
+	video: null,
+	stream: null,
+	init(videoElement) {
 		if (!('mediaDevices' in navigator)) {
 			navigator.mediaDevices = {};
 		}
@@ -12,19 +14,24 @@ export const camera = {
 					return Promise.reject(new Error('getUserMedia is not implemented!'));
 				}
 	
-				return new Promise(function (resolve, reject) {
+				return new Promise((resolve, reject) => {
 					getUserMedia.call(navigator, constraints, resolve, reject);
 				});
 			}
 		}
+
+		this.setVideo(videoElement);
 	},
-	startCapture(videoElement) {
-		this.initializeMedia();
-	
+	setVideo(videoElement) {
+		this.video = videoElement;
+	},
+	startCapture() {
 		return navigator.mediaDevices.getUserMedia({ video: true })
-			.then(stream => {
-				videoElement.src = URL.createObjectURL(stream);
-				videoElement.play();
-			});
+			.then(stream => this.video.srcObject = stream);
+	},
+	stopCapture() {
+		if (this.video) {
+			this.video.srcObject.getVideoTracks().forEach(track => track.stop());
+		}
 	}
 };

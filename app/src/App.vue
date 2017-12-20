@@ -1,14 +1,17 @@
 <template>
-<div id="app">
-  <app-header></app-header>
-  <router-view class="app-page-wrapper"></router-view>
-  <app-footer></app-footer>
-</div>
+  <div id="app">
+    <app-header></app-header>
+    <div class="app-page-wrapper">
+      <router-view ></router-view>
+    </div>
+    <app-footer></app-footer>
+  </div>
 </template>
 
 <script>
-import AppHeader from "#/Header.vue";
-import AppFooter from "#/Footer.vue";
+import './../assets/base.scss';
+import AppHeader from '#/Header.vue';
+import AppFooter from '#/Footer.vue';
 
 export default {
   components: {

@@ -8,6 +8,12 @@ $accent: #c5a578;
   accent: $accent 
 ));
 
+@include md-register-theme("default-dark", (
+  primary: $primary, 
+  accent: $accent ,
+  theme: dark
+));
+
 @include md-register-theme("reverse", (
   primary: $accent, 
   accent: $primary 
@@ -19,6 +25,24 @@ $accent: #c5a578;
   theme: dark
 ));
 
+@import "~vue-material/dist/theme/all";
+
+body {
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+}
+
+.container {
+  padding: 1rem;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
 @import "~vue-material/dist/theme/all";
 

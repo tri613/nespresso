@@ -1,6 +1,6 @@
 <template>
   <footer id="app-footer">
-    <span style="margin-right: 1rem;">Made with ❤ by
+    <span style="margin-right: 1rem;">Made with ☕️ by
       <a href="https://github.com/tri613" target="_blank" id="app-footer-link">Trina</a>, 2017.</span>
   </footer>
 </template>

@@ -1,22 +1,18 @@
 <template>
-  <div>
     <div class="app-camera-container md-accent">
       <div class="app-camera-placeholder md-title">
         <span><md-icon>photo_camera</md-icon> <span>Scan my coffee</span></span>
       </div>
       <video ref="video" id="video" class="app-camera-video" autoplay></video>
-      <canvas ref="canvas" class="app-camera-canvas"></canvas>
+
+      <app-snackbar :open.sync="notSupported"></app-snackbar>
     </div>
     
-    <div class="">
-      <md-button class="md-raised md-accent" 
-        @click="notSupported = !notSupported">
-        {{ isTracking ? "Stop Tracking" : "Start Tracking" }}
-      </md-button>
-    </div>
+    <!-- <md-button class="md-raised md-accent" 
+      @click="isTracking = !isTracking">
+      {{ isTracking ? "Stop Tracking" : "Start Tracking" }}
+    </md-button> -->
 
-    <app-snackbar :open.sync="notSupported"></app-snackbar>
-  </div>
 </template>
 
 <script>
@@ -26,86 +22,75 @@ import "@/../node_modules/tracking/build/tracking-min";
 import { camera } from "@/libs/camera";
 import { EventBus } from "@/bus";
 
-import AppSnackbar from './NoCamSnackbar';
+import AppSnackbar from "./NoCamSnackbar";
 
 export default {
   data() {
     return {
       notSupported: null,
       isTracking: false,
-      context: null,
       tracker: null,
       task: null,
       result: []
     };
   },
   mounted() {
-    const [vw, vh] = [window.innerWidth, window.innerHeight - 42];
-    this.$refs.video.width = vw;
-    this.$refs.video.height = vh;
-    this.$refs.canvas.width = vw;
-    this.$refs.canvas.height = vh;
-
-    camera
-      .startCapture(this.$refs.video)
-      .then(this.initTracker)
-      .then(() => (this.isTracking = true))
-      .catch(err => {
-        console.log("startCapture", err);
-        this.notSupported = true;
-      });
+    this.initCamera()
+      .then(this.initTracker);
   },
   watch: {
     isTracking(newValue) {
-      newValue ? this.task.run() : this.task.stop();
-    },
-    coffees(newValue, oldValue) {
-      console.log("coffee changed", newValue, oldValue);
+      if (newValue) {
+        this.task.run();
+        camera.startCapture();
+      } else {
+        this.task.stop();
+        camera.stopCapture();
+      }
     }
   },
   methods: {
+    initCamera() {
+      camera.init(this.$refs.video);
+      return camera.startCapture()
+        .catch(err => this.notSupported = true);
+    },
     initTracker() {
       this.registerColors();
-      this.tracker = new tracking.ColorTracker(this.coffee.map(c => c.color.names[0]));
+      this.tracker = new tracking.ColorTracker(this.coffees.map(c => c.color.names[0]));
       this.tracker.setMinDimension(20);
       this.task = tracking.track(`#${this.$refs.video.id}`, this.tracker);
-
-      const context = this.$refs.canvas.getContext("2d");
-      const { width, height } = this.$refs.canvas;
-
-      this.tracker.on("track", event => {
-        context.clearRect(0, 0, width, height);
-        if (event.data.length) {
-          this.task.stop();
-          event.data.forEach(rect => {
-            this.drawRect(rect);
-            // find match
-            this.result = coffees.filter(coffee => coffee.name == rect.color);
-          });
-        }
-      });
+      this.tracker.on("track", this.trackEventHandler);
+      this.isTracking = false;
     },
     registerColors() {
       const therhold = 20;
       this.coffees.forEach(coffee => {
         const [cr, cg, cb] = coffee.color.rgb;
-        tracking.ColorTracker.registerColors(coffee.color.names[0], (r, g, b) => {
-          return (isBetween(r, cr) && isBetween(g, cg) && isBetween(b, cb));
-        });
+        tracking.ColorTracker.registerColor(
+          coffee.color.names[0],
+          (r, g, b) => {
+            return (
+              this.isBetween(r, cr) &&
+              this.isBetween(g, cg) &&
+              this.isBetween(b, cb)
+            );
+          }
+        );
       });
     },
     isBetween(num, target, therhold) {
       return num < target + therhold && num > target + therhold;
     },
-    drawRect(rect) {
-      this.context.strokeStyle = '#f44336';
-      this.context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-      this.context.fillStyle = '#fff';
-      this.context.fillText(
-        "Coffee detected!",
-        rect.x,
-        rect.y + rect.height + 10
-      );
+    trackEventHandler(event) {
+      if (event.data.length) {
+        this.isTracking = false;
+        this.result = event.data
+          .map(rect => 
+            coffees.filter(coffee => coffee.name == rect.color)
+          )
+          .reduce((flatten, rows) => [...flatten, rows])
+      }
     }
   },
   computed: {
@@ -115,32 +100,37 @@ export default {
   },
   components: {
     AppSnackbar
+  },
+  beforeDestroy() {
+    camera.stopCapture();
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .app-camera-container {
-  position: relative;
-  width: 100%;
+  flex: 1;
   overflow: hidden;
-  
 }
 
-.app-camera-placeholder,
-.app-camera-canvas {
+.app-camera-video {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .app-camera-placeholder {
-  color: #616161;
-  background: #e0e0e0;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background: #e0e0e0;
+  color: #616161;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: -1;
 }
 </style>

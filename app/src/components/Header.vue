@@ -1,6 +1,6 @@
 <template>
   <header>
-    <md-toolbar class="md-dense md-primary" id="app-header">
+    <md-toolbar class="md-primary" id="app-header">
       <md-button class="md-icon-button" @click="openSideNav = !openSideNav">
         <md-icon>menu</md-icon>
       </md-button>
@@ -14,16 +14,12 @@
       </md-toolbar>
 
       <md-list>
-        <md-list-item @click="openSideNav = !openSideNav">
-          <router-link :to="{ 'name': 'scan' }">
-            <md-icon>photo_camera</md-icon> <span>Scan my coffee</span>
-          </router-link>
+        <md-list-item @click="openSideNav = false" :to="{ 'name': 'scan' }">
+          <md-icon>photo_camera</md-icon> <span class="md-list-item-text">Scan my coffee</span>
         </md-list-item>
 
-        <md-list-item @click="openSideNav = !openSideNav">
-          <router-link :to="{ 'name': 'coffee' }">
-            <md-icon>list</md-icon> <span>List of coffees</span>
-          </router-link>
+        <md-list-item @click="openSideNav = false" :to="{ 'name': 'coffee' }">
+          <md-icon>list</md-icon> <span class="md-list-item-text">List of coffees</span>
         </md-list-item>
       </md-list>
     </md-drawer>
@@ -56,7 +52,6 @@ export default {
 
 
 <style lang="scss">
-
 #app-header {
   position: fixed;
   width: 100%;
@@ -67,6 +62,4 @@ export default {
 .router-link-exact-active {
   color: #bd1d11 !important;
 }
-
 </style>
-
