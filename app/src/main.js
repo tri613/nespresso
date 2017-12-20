@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css'
+import Vue from "vue";
+import VueMaterial from "vue-material";
+import "vue-material/dist/vue-material.min.css";
 
-import App from './App.vue'
-import router from './router'
+import App from "./App.vue";
+import router from "./router";
 
-Vue.use(VueMaterial)
+Vue.use(VueMaterial);
 
 // Vue.material.registerTheme('default', {
 //   primary: 'black',
@@ -15,7 +15,7 @@ Vue.use(VueMaterial)
 // })
 
 new Vue({
-  el: '#app',
+  el: "#app",
   router,
   render: h => h(App)
-})
+});

@@ -1,58 +1,43 @@
-var path = require('path')
-var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
-var CleanWebpackPlugin = require('clean-webpack-plugin')
+var path = require("path");
+var webpack = require("webpack");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var CopyWebpackPlugin = require("copy-webpack-plugin");
+var CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: './src/main.js',
+  entry: "./src/main.js",
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'js/build-[hash].js',
-    chunkFilename: 'js/[name]-[chunkhash].js',
+    path: path.resolve(__dirname, "./dist"),
+    filename: "js/build-[hash].js",
+    chunkFilename: "js/[name]-[chunkhash].js"
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
+        use: ["vue-style-loader", "css-loader"]
       },
       {
         test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ],
+        use: ["vue-style-loader", "css-loader", "sass-loader"]
       },
       {
         test: /\.sass$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader?indentedSyntax'
-        ],
+        use: ["vue-style-loader", "css-loader", "sass-loader?indentedSyntax"]
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: "vue-loader",
         options: {
           loaders: {
             // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
             // the "scss" and "sass" values for the lang attribute to the right configs here.
             // other preprocessors should work out of the box, no loader config like this necessary.
-            'scss': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader'
-            ],
-            'sass': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader?indentedSyntax'
+            scss: ["vue-style-loader", "css-loader", "sass-loader"],
+            sass: [
+              "vue-style-loader",
+              "css-loader",
+              "sass-loader?indentedSyntax"
             ]
           }
           // other vue-loader options go here
@@ -60,14 +45,14 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
+        loader: "file-loader",
         options: {
-          name: '[name].[ext]?[hash]'
+          name: "[name].[ext]?[hash]"
         }
       }
     ]
@@ -75,45 +60,45 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: path.join(__dirname, 'index.html'),
-      inject: true,
-    }),
+      template: path.join(__dirname, "index.html"),
+      inject: true
+    })
   ],
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, './src'),
-      '#': path.resolve(__dirname, './src/components')
+      vue$: "vue/dist/vue.esm.js",
+      "@": path.resolve(__dirname, "./src"),
+      "#": path.resolve(__dirname, "./src/components")
     },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ["*", ".js", ".vue", ".json"]
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true,
+    noInfo: true
     // overlay: true
   },
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
-}
+  devtool: "#eval-source-map"
+};
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports.output.publicPath = "./"
-  module.exports.devtool = '#source-map'
+if (process.env.NODE_ENV === "production") {
+  module.exports.output.publicPath = "./";
+  module.exports.devtool = "#source-map";
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
+      "process.env": {
+        NODE_ENV: "\"production\""
       }
     }),
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(["dist"]),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, './assets'),
-        to: path.resolve(__dirname, './dist/assets'),
-        ignore: ['.*']
+        from: path.resolve(__dirname, "./assets"),
+        to: path.resolve(__dirname, "./dist/assets"),
+        ignore: [".*"]
       }
     ]),
     new webpack.optimize.UglifyJsPlugin({
@@ -125,15 +110,15 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
-  ])
+  ]);
 }
 
-if (process.env.NODE_ENV === 'development') {
-  module.exports.output.publicPath = "/"
+if (process.env.NODE_ENV === "development") {
+  module.exports.output.publicPath = "/";
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"development"'
+      "process.env": {
+        NODE_ENV: "\"development\""
       }
     })
   ])

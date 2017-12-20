@@ -1,14 +1,14 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-const AppScan = () => import(/* webpackChunkName: "scan" */ '#/scan/Scan')
-const AppList = () => import(/* webpackChunkName: "list" */ '#/list/List')
+const AppScan = () => import(/* webpackChunkName: "scan" */ "#/scan/Scan");
+const AppList = () => import(/* webpackChunkName: "list" */ "#/list/List");
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', name: 'scan', component: AppScan },
-    { path: '/coffee', name: 'coffee', component: AppList }
-]
+  { path: "/", name: "scan", component: AppScan },
+  { path: "/coffee", name: "coffee", component: AppList }
+];
 
-export default new VueRouter({ routes })
+export default new VueRouter({ routes });
