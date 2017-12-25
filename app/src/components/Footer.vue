@@ -1,18 +1,20 @@
 <template>
-  <footer id="app-footer">
+  <footer id="app-footer" class="md-accent">
     <span style="margin-right: 1rem;">Made with ☕️ by
       <a href="https://github.com/tri613" target="_blank" id="app-footer-link">Trina</a>, 2017.</span>
   </footer>
 </template>
 
 <style lang="scss">
+@import "~@/../assets/base.scss";
+
   #app-footer {
     color: #FFF;
     padding: 1rem;
-    background-color: #2196F3;
+    background-color: $accent;
     text-align: right; 
   }
   #app-footer-link {
-    color: #FFEB3B;
+    color: #3a3633;
   }
 </style>

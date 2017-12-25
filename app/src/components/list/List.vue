@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container app-page">
     <div class="card-wrapper">
       <md-card 
         md-with-hover
@@ -34,12 +34,11 @@
 </template>
 
 <script>
-import _ from "lodash/core";
-import { EventBus } from "@/bus";
+import { CoffeeBus } from "@/bus";
 
 export default {
   created() {
-    EventBus.$on("input", value => (this.keywords = value));
+    CoffeeBus.$on("input", value => (this.keywords = value));
   },
   data() {
     return {
@@ -53,12 +52,12 @@ export default {
       };
     },
     writeToSearch(tag) {
-      EventBus.$emit("click-tag", tag);
+      CoffeeBus.$emit("click-tag", tag);
     }
   },
   computed: {
     coffees() {
-      return EventBus.coffees;
+      return CoffeeBus.coffees;
     },
     sortedCoffees() {
       const intensityGroup = this.coffees.reduce((result, current) => {
@@ -82,7 +81,7 @@ export default {
         return this.sortedCoffees;
       }
 
-      const keywords = this.keywords.trim().split(/\s+/);
+      const keywords = this.keywords.toLowerCase().trim().split(/\s+/);
       return this.sortedCoffees.filter(coffee =>
         keywords.some(
           term =>

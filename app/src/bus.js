@@ -1,7 +1,7 @@
 import Vue from "vue";
 import axios from "axios";
 
-export const EventBus = new Vue({
+export const CoffeeBus = new Vue({
   data: {
     coffees: []
   },
@@ -18,6 +18,29 @@ export const EventBus = new Vue({
             this.coffees = response.data;
           });
       }
+    }
+  }
+});
+
+export const ScanBus = new Vue({
+  data: {
+    result: []
+  },
+  created() {
+  },
+  methods: {
+    // toggleTrackingStatus() {
+    //   this.isTracking = !this.isTracking;
+    //   this.$emit("toggle-tracking", this.isTracking);
+    // },
+    setNotSupportState(state) {
+      this.$emit("update:notSupported", state);
+    },
+    setResult(result) {
+      this.result = result;
+    },
+    setShowResultState(state) {
+      this.$emit("update:showResult", state);
     }
   }
 });

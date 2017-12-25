@@ -1,5 +1,7 @@
 $primary: #6b6562;
-$accent: #c5a578;
+$accent: #ef5350; //#c5a578;
+$nav-height: 56px;
+$full-height: calc(100% - 56px);
 
 @import "~vue-material/dist/theme/engine";
 
@@ -28,6 +30,7 @@ $accent: #c5a578;
 @import "~vue-material/dist/theme/all";
 
 body {
+  // background-color: $primary;
   box-sizing: border-box;
   width: 100vw;
   overflow-x: hidden;
@@ -43,6 +46,16 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.app-page-wrapper {
+  flex: 1;
+  padding-top: $nav-height;
+  position: relative;
+}
+
+// .app-page {
+//   height: 100%;
+// }
 
 @import "~vue-material/dist/theme/all";
 
@@ -74,4 +87,11 @@ body {
     @include transition();
     color: $color;
   }
+}
+
+/* placeholders  */
+
+%full-page {
+  height: $full-height;
+  top: $nav-height;
 }

@@ -1,57 +1,63 @@
 <template>
-    <md-list>
-    <md-list-item md-expand>
-      <md-icon>whatshot</md-icon>
-      <span class="md-list-item-text">News</span>
-
-      <md-list slot="md-expand">
-        <md-list-item class="md-inset">World</md-list-item>
-        <md-list-item class="md-inset">Europe</md-list-item>
-        <md-list-item class="md-inset">South America</md-list-item>
+  <transition animation="app-slide-up" v-if="active">
+    <div id="app-scan-result">
+      <md-list v-if="shortResult.length">
+        <md-list-item v-for="coffee in shortResult" :key="coffee.name" md-expand>
+          <img :src="coffee.image" :alt="coffee.name">
+          <h4>{{ coffee.name }}</h4>
+          <h5>{{ coffee.details.subtitle }} </h5>
+          <div slot="md-expand" style="padding: 4px 16px;">
+            <p class="md-subheading">{{ coffee.flavor }}</p>
+            <p><md-icon>local_cafe</md-icon> x {{ coffee.intensity }}</p>
+            <p class="md-body-1">{{ coffee.details.description }}</p>
+          </div>
+        </md-list-item>
       </md-list>
-    </md-list-item>
 
-    <md-list-item md-expand>
-      <md-icon>videogame_asset</md-icon>
-      <span class="md-list-item-text">Games</span>
-
-      <md-list slot="md-expand">
-        <md-list-item class="md-inset">Console</md-list-item>
-        <md-list-item class="md-inset">PC</md-list-item>
-        <md-list-item class="md-inset">Phone</md-list-item>
-      </md-list>
-    </md-list-item>
-
-    <md-list-item md-expand>
-      <md-icon>video_library</md-icon>
-      <span class="md-list-item-text">Video</span>
-
-      <md-list slot="md-expand">
-        <md-list-item class="md-inset">Humor</md-list-item>
-        <md-list-item class="md-inset">Music</md-list-item>
-        <md-list-item class="md-inset">Movies</md-list-item>
-        <md-list-item class="md-inset">TV Shows</md-list-item>
-      </md-list>
-    </md-list-item>
-
-    <md-list-item>
-      <md-icon>shopping_basket</md-icon>
-      <span class="md-list-item-text">Shop</span>
-    </md-list-item>
-  </md-list>
+      <md-snackbar :md-duration="Infinity" :md-active="true" >
+        <span>Don't see your coffee here?</span>
+        <md-button id="app-snackbar-btn" class="md-raised md-accent md-dense" @click="close()">RETRY</md-button>
+      </md-snackbar>
+    </div>
+  </transition>
 </template>
 
 <script>
 export default {
   props: {
-    coffee: {
-      type: Object,
-      default: []
+    result: {
+      type: Array,
+      default: () => ([])
+    },
+    active: false
+  },
+  methods: {
+    close() {
+      this.$emit("update:active", false);
+    }
+  },
+  computed: {
+    shortResult() {
+      return this.result.splice(0, 5);
     }
   }
-}
+};
 </script>
 
-<style>
+<style lang="scss">
+  @import "~@/../assets/base.scss";
 
+  #app-scan-result {
+    @extend %full-page;
+    background: #FFF;
+    z-index: 2;
+    width: 100%;
+    position: fixed;
+    overflow-y: scroll;
+    padding-bottom: 50px;
+  }
+
+  p {
+    white-space: initial;
+  }
 </style>
