@@ -1,24 +1,11 @@
 <template>
   <div class="app-camera-container md-accent">
-    <md-empty-state 
-      :class="[ isInited ? 'app-disabled' : '' ]"
-      md-icon="photo_camera"
-      md-label="Scan my coffee"
-      md-description="Scan your coffee to find out what flavor it is!">
-      <md-button class="md-primary md-raised" @click="init()">Start Scaning!</md-button>
-    </md-empty-state>
+    
 
     <video autoplay playsinline class="app-camera-video" :class="[ isInited ? '' : 'app-disabled' ]" ref="video" id="video" autoplay></video>
     <canvas :class="[ isInited ? '' : 'app-disabled' ]"  ref="canvas" class="app-camera-canvas"></canvas>
 
-    <!-- <md-button class="md-raised md-accent" 
-      @click="init()">
-      {{ isTracking ? "Stop Tracking" : "Start Tracking" }}
-    </md-button> -->
-
-    <div class="app-mask" v-if="isLoading">
-      <md-progress-spinner class=" md-accent" md-mode="indeterminate"></md-progress-spinner>
-    </div>
+    
   </div>
 </template>
 
@@ -52,8 +39,6 @@ export default {
         task.stop();
       }
     }
-  },
-  mounted() {
   },
   methods: {
     init() {

@@ -57,6 +57,21 @@ body {
 //   height: 100%;
 // }
 
+.app-slide-up-enter-active, .app-slide-up-leave-active {
+  transition: transform .4s;
+}
+.app-slide-up-enter, .app-slide-up-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  // opacity: 0;
+  transform: translateY(100%);
+}
+
+.app-fade-enter-active, .app-fade-leave-active {
+  transition: opacity .4s;
+}
+.app-fade-enter, .app-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 @import "~vue-material/dist/theme/all";
 
 /*

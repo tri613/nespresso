@@ -34,17 +34,9 @@
 </template>
 
 <script>
-import { CoffeeBus } from "@/bus";
+import { mapGetters, mapState } from "vuex";
 
 export default {
-  created() {
-    CoffeeBus.$on("input", value => (this.keywords = value));
-  },
-  data() {
-    return {
-      keywords: ""
-    };
-  },
   methods: {
     colorStyle(rgb, transparency = 1) {
       return {
@@ -52,30 +44,14 @@ export default {
       };
     },
     writeToSearch(tag) {
-      CoffeeBus.$emit("click-tag", tag);
+      this.$store.commit("setKeywords", tag);
     }
   },
   computed: {
-    coffees() {
-      return CoffeeBus.coffees;
-    },
-    sortedCoffees() {
-      const intensityGroup = this.coffees.reduce((result, current) => {
-        result[current.intensity] = result[current.intensity] || [];
-        result[current.intensity].push(current);
-        return result;
-      }, {});
-
-      const flatten = [];
-      for (const key in intensityGroup) {
-        const group = intensityGroup[key].sort(
-          (a, b) => (a.name <= b.name ? -1 : 1)
-        );
-        flatten.push(...group);
-      }
-
-      return flatten;
-    },
+    ...mapState({
+      keywords: state => state.list.keywords
+    }),
+    ...mapGetters(["sortedCoffees"]),
     filteredCoffees() {
       if (!this.keywords) {
         return this.sortedCoffees;

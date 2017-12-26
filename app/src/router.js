@@ -7,8 +7,8 @@ const AppList = () => import(/* webpackChunkName: "list" */ "#/list/List");
 Vue.use(VueRouter);
 
 const routes = [
-  { path: "/", name: "scan", component: AppScan },
-  { path: "/coffee", name: "coffee", component: AppList }
+  { path: "/", name: "scan", component: AppScan, meta: { header: "AppScanHeader" }},
+  { path: "/coffee", name: "coffee", component: AppList, meta: { header: "AppListHeader" }}
 ];
 
 export default new VueRouter({ routes });

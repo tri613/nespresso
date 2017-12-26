@@ -5,34 +5,27 @@
     <button id="app-clear-icon" class="app-icon" v-if="keywords.length" @click="clearKeywords()">
       <md-icon>clear</md-icon>
     </button>
-    <!-- <md-field :md-clearable="true" :md-inline="true" md-theme="reverse-dark">
-      <label for="">a coffee name or color</label>
-      <md-input type="text" v-model="keywords"></md-input>
-    </md-field> -->
   </div>
 </template>
 
 <script>
-import { CoffeeBus } from "@/bus";
+import { mapMutations } from "vuex";
 
 export default {
-  created() {
-    CoffeeBus.$on("click-tag", tag => (this.keywords = tag));
-  },
-  data() {
-    return {
-      keywords: ""
-    };
-  },
-  watch: {
-    keywords() {
-      CoffeeBus.$emit("input", this.keywords);
+  methods: {
+    ...mapMutations(["setKeywords"]),
+    clearKeywords() {
+      this.setKeywords("");
     }
   },
-  methods: {
-    clearKeywords() {
-      console.log('clear clicked');
-      this.keywords = "";
+  computed: {
+    keywords: {
+      get() {
+        return this.$store.state.list.keywords;
+      },
+      set(value) {
+        this.$store.commit("setKeywords", value);
+      }
     }
   }
 };
@@ -54,13 +47,13 @@ export default {
     .app-icon {
       position: absolute;
       top: 50%;
+      transform: translate(0, -45%);
     }
 
     #app-search-icon {
       left: 5px;
       color: $placeholder;
       fill: $placeholder;
-      transform: translate(0, -45%);
     }
 
     #app-clear-icon {
@@ -69,6 +62,7 @@ export default {
       border: 0;
       background: transparent;
       cursor: pointer;
+      padding: 0;
       > i {
         fill: $accent;
         color: $accent;

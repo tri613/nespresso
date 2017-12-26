@@ -2,10 +2,11 @@ import Vue from "vue";
 import VueMaterial from "vue-material";
 import "vue-material/dist/vue-material.min.css";
 
+Vue.use(VueMaterial);
+
 import App from "./App.vue";
 import router from "./router";
-
-Vue.use(VueMaterial);
+import store from "./store";
 
 // Vue.material.registerTheme('default', {
 //   primary: 'black',
@@ -16,6 +17,7 @@ Vue.use(VueMaterial);
 
 new Vue({
   el: "#app",
+  store,
   router,
   render: h => h(App)
 });

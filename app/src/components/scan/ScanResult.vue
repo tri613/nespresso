@@ -1,5 +1,5 @@
 <template>
-  <transition animation="app-slide-up" v-if="active">
+  <transition name="app-slide-up" v-if="showResult">
     <div id="app-scan-result">
       <md-list v-if="shortResult.length">
         <md-list-item v-for="coffee in shortResult" :key="coffee.name" md-expand>
@@ -23,25 +23,26 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-  props: {
-    result: {
-      type: Array,
-      default: () => ([])
-    },
-    active: false
-  },
-  methods: {
-    close() {
-      this.$emit("update:active", false);
-    }
-  },
   computed: {
+    ...mapState({
+      result: state => state.scan.result,
+      showResult: state => state.scan.showResult
+    }),
     shortResult() {
       return this.result.splice(0, 5);
     }
+  },
+  methods: {
+    close() {
+      this.$store.commit("setShowResult", false);
+      this.$store.state.scan.startTaskHandler();
+    }
   }
 };
+
 </script>
 
 <style lang="scss">
@@ -50,7 +51,7 @@ export default {
   #app-scan-result {
     @extend %full-page;
     background: #FFF;
-    z-index: 2;
+    z-index: 10;
     width: 100%;
     position: fixed;
     overflow-y: scroll;
@@ -59,5 +60,12 @@ export default {
 
   p {
     white-space: initial;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0
   }
 </style>

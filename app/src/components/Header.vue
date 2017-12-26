@@ -27,8 +27,7 @@
 </template>
 
 <script>
-import upperFirst from "lodash/upperFirst";
-import AppCoffeeHeader from "#/list/SearchBar";
+import AppListHeader from "#/list/SearchBar";
 import AppScanHeader from "#/scan/HeaderBar";
 
 export default {
@@ -40,11 +39,11 @@ export default {
   },
   watch: {
     "$route"(to, from) {
-      this.headerComponent = `App${upperFirst(to.name)}Header`;
+      this.headerComponent = to.meta.header;
     }
   },
   components: {
-    AppCoffeeHeader,
+    AppListHeader,
     AppScanHeader
   }
 };
