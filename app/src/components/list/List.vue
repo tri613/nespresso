@@ -15,7 +15,6 @@
           </md-card-header-text>
           <md-card-media>
             <img :src="coffee.image" :alt="coffee.name">
-            <!-- <div v-if="coffee.error" class="app-tablet" :style="{'--color': colorStyle(coffee.color.rgb)}"></div> -->
           </md-card-media>
         </md-card-header>
         <md-card-content>
