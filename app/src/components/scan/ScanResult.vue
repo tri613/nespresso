@@ -3,10 +3,11 @@
     <div id="app-scan-result">
       <md-list v-if="result.length">
         <md-list-item v-for="coffee in shortResult" :key="coffee.name" md-expand>
-          <img :src="coffee.image" :alt="coffee.name">
-          <h5>{{ coffee.details.subtitle }} </h5>
+          <!-- <img :src="coffee.image" :alt="coffee.name"> -->
+          <app-coffee-color :rgb="coffee.color.rgb" :width="50"></app-coffee-color>
+          <h4>{{ coffee.name }}</h4>
           <div slot="md-expand" style="padding: 4px 16px;">
-            <h4>{{ coffee.name }}</h4>
+            <h5>{{ coffee.details.subtitle }} </h5>
             <p class="md-subheading">{{ coffee.flavor }}</p>
             <p><md-icon>local_cafe</md-icon> x {{ coffee.intensity }}</p>
             <p class="md-body-1">{{ coffee.details.description }}</p>
@@ -15,8 +16,9 @@
       </md-list>
 
       <md-snackbar :md-duration="Infinity" :md-active="true" >
-        <span>Don't see your coffee here?</span>
-        <md-button id="app-snackbar-btn" class="md-raised md-accent md-dense" @click="close()">RETRY</md-button>
+        <!-- <span>Don't see your coffee here?</span> -->
+        <span>沒看到你的咖啡嗎？</span>
+        <md-button id="app-snackbar-btn" class="md-raised md-accent md-dense" @click="close()">再試一遍</md-button>
       </md-snackbar>
     </div>
   </transition>
@@ -24,6 +26,7 @@
 
 <script>
 import { mapState } from "vuex";
+import AppCoffeeColor from "./../shared/CoffeeColor";
 
 export default {
   computed: {
@@ -41,6 +44,9 @@ export default {
       this.$store.commit("setShowResult", false);
       this.startTaskHandler();
     }
+  },
+  components: {
+    AppCoffeeColor
   }
 };
 

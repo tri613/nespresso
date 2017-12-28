@@ -15,7 +15,8 @@
           </md-card-header-text>
           <md-card-media>
             <!-- <img :src="coffee.image" :alt="coffee.name"> -->
-            <div class="app-tablet" :style="{ '--color': colorStyle(coffee.color.rgb) }"></div>
+            <!-- <div class="app-tablet" :style="{ '--color': colorStyle(coffee.color.rgb) }"></div> -->
+            <app-coffee-color :rgb="coffee.color.rgb"></app-coffee-color>
           </md-card-media>
         </md-card-header>
         <md-card-content>
@@ -28,13 +29,14 @@
       </md-card>
     </div>
     <p v-if="!filteredCoffees.length">
-      No matching coffee found.
+      沒有符合條件的口味喔！
     </p>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import AppCoffeeColor from "./../shared/CoffeeColor";
 
 export default {
   methods: {
@@ -69,6 +71,9 @@ export default {
     filteredCoffees() {
       window.scrollTo(0, 0);
     }
+  },
+  components: {
+    AppCoffeeColor
   }
 };
 </script>

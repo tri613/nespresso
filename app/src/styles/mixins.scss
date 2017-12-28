@@ -1,0 +1,36 @@
+/*
+  mixins
+*/
+
+@mixin transition() {
+  transition: .3s all ease-in;
+}
+
+@mixin placeholder($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+    @include transition();
+  }
+
+  &:-moz-placeholder {
+    color: $color;
+    @include transition();
+  }
+
+  &::-moz-placeholder {
+    @include transition();
+    color: $color;
+  }
+
+  &:-ms-input-placeholder {
+    @include transition();
+    color: $color;
+  }
+}
+
+/* placeholders  */
+
+%full-page {
+  height: $full-height;
+  top: $nav-height;
+}

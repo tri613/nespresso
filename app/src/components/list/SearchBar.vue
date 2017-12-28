@@ -1,6 +1,6 @@
 <template>
   <div class="app-search-bar">
-    <input type="search" v-model="keywords" class="app-input" placeholder="a coffee name or color">
+    <input type="search" v-model="keywords" class="app-input" placeholder="一種咖啡的名字或顏色">
     <md-icon id="app-search-icon" class="app-icon" @click="clearKeywords()">search</md-icon>
     <button id="app-clear-icon" class="app-icon" v-if="keywords.length" @click="clearKeywords()">
       <md-icon>clear</md-icon>

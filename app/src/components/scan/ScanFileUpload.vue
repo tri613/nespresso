@@ -7,9 +7,9 @@
         v-if="!isInited"
         class="app-page"
         md-icon="photo_camera"
-        md-label="Scan my coffee"
-        md-description="Scan your coffee to find out what flavor it is!">
-        <md-button class="md-primary md-raised" @click="triggerUpload()">Start Scaning!</md-button>
+        md-label="我的咖啡掃瞄器"
+        md-description="掃掃看手上的膠囊是什麼口味吧！">
+        <md-button class="md-primary md-raised" @click="triggerUpload()">來掃掃看</md-button>
       </md-empty-state>
 
       <div class="container" v-if="isInited" key="card"> 
@@ -33,8 +33,8 @@
           </md-card-content>
 
           <md-card-actions>
-            <md-button v-if="result.length" @click="$store.commit('setShowResult', true)">See result</md-button>
-            <md-button class="md-primary md-raised" @click="triggerUpload()">Scan Again</md-button>
+            <md-button v-if="result.length" @click="$store.commit('setShowResult', true)">查看結果</md-button>
+            <md-button class="md-primary md-raised" @click="triggerUpload()">再試一遍</md-button>
           </md-card-actions>
         </md-card>
       </div>
@@ -60,7 +60,7 @@
 import { mapState } from "vuex";
 import { scan } from "@/libs/plaette";
 
-import AppLoadingMask from "./LoadingMask";
+import AppLoadingMask from "./../shared/LoadingMask";
 
 export default {
   data: () => ({
@@ -181,6 +181,7 @@ export default {
       height: 30px;
       border-radius: 4px;
       margin: .5rem;
+      border: 1px solid #EEEEEE;
     }
   }
   
