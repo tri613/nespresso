@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "~@/../assets/base.scss";
+  @import "~@/styles/base.scss";
 
   $input: #524c48;
   $input-color: #fff;

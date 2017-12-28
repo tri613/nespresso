@@ -6,7 +6,7 @@
 </template>
 
 <style lang="scss">
-@import "~@/../assets/base.scss";
+@import "~@/styles/base.scss";
 
   #app-footer {
     color: #FFF;

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import "./../assets/base.scss";
+import "./styles/base.scss";
 import AppHeader from "#/Header.vue";
 import AppFooter from "#/Footer.vue";
 

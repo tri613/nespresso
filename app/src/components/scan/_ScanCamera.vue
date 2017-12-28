@@ -119,7 +119,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "~@/../assets/base.scss";
+  @import "~@/styles/base.scss";
 
   .app-camera-container {
     // background: #e0e0e0;

@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "~@/../assets/base.scss";
+  @import "~@/styles/base.scss";
 
   .app-mask {
     @extend %full-page;

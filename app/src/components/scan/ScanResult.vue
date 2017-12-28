@@ -47,7 +47,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "~@/../assets/base.scss";
+  @import "~@/styles/base.scss";
 
   #app-scan-result {
     @extend %full-page;
