@@ -19,7 +19,7 @@
           </md-card-header>
 
           <md-card-media>
-            <img :src="src" class="app-image">
+            <img :src="src">
           </md-card-media>
 
           <md-card-content>
