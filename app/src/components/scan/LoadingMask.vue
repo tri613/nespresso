@@ -24,7 +24,7 @@ export default {
     @extend %full-page;
     position: fixed;
     width: 100%;
-    background-color: transparentize($color: #FFF, $amount: 0.5);
+    background-color: transparentize(#FFF, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;

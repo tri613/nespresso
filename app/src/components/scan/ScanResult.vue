@@ -1,12 +1,12 @@
 <template>
   <transition name="app-slide-up" v-if="showResult">
     <div id="app-scan-result">
-      <md-list v-if="shortResult.length">
+      <md-list v-if="result.length">
         <md-list-item v-for="coffee in shortResult" :key="coffee.name" md-expand>
           <img :src="coffee.image" :alt="coffee.name">
-          <h4>{{ coffee.name }}</h4>
           <h5>{{ coffee.details.subtitle }} </h5>
           <div slot="md-expand" style="padding: 4px 16px;">
+            <h4>{{ coffee.name }}</h4>
             <p class="md-subheading">{{ coffee.flavor }}</p>
             <p><md-icon>local_cafe</md-icon> x {{ coffee.intensity }}</p>
             <p class="md-body-1">{{ coffee.details.description }}</p>
@@ -28,6 +28,7 @@ import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState({
+      startTaskHandler: state => state.scan.startTaskHandler,
       result: state => state.scan.result,
       showResult: state => state.scan.showResult
     }),
@@ -38,7 +39,7 @@ export default {
   methods: {
     close() {
       this.$store.commit("setShowResult", false);
-      this.$store.state.scan.startTaskHandler();
+      this.startTaskHandler();
     }
   }
 };

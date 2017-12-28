@@ -57,7 +57,7 @@ export default {
     }
 
     #app-clear-icon {
-      // transform: translate(0, -50%);
+      transform: translate(0, -55%);
       right: 5px;
       border: 0;
       background: transparent;

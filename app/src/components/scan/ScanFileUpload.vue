@@ -1,11 +1,11 @@
 <template>
     <!-- :class="[ isInited ? 'app-disabled' : '' ]" -->
-  <div>
+  <div class="app-page app-page-wrapper">
     <transition name="app-fade" mode="out-in">
       <md-empty-state
         key="empty-state"
         v-if="!isInited"
-        class="app-empty-state-container"
+        class="app-page"
         md-icon="photo_camera"
         md-label="Scan my coffee"
         md-description="Scan your coffee to find out what flavor it is!">
@@ -23,8 +23,18 @@
             <img :src="src" class="app-image">
           </md-card-media>
 
+          <md-card-content>
+            <div class="app-plaette-container">
+              <div class="app-plaette" v-for="(color, i) in plaette" 
+                :key="i"
+                :style="{ backgroundColor: `rgb(${color.join(',')})`}">
+              </div>
+            </div>
+          </md-card-content>
+
           <md-card-actions>
-            <md-button  class="md-primary md-raised" @click="triggerUpload()">Scan Again</md-button>
+            <md-button v-if="result.length" @click="$store.commit('setShowResult', true)">See result</md-button>
+            <md-button class="md-primary md-raised" @click="triggerUpload()">Scan Again</md-button>
           </md-card-actions>
         </md-card>
       </div>
@@ -48,7 +58,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { createTrackingTask } from "@/libs/tracker";
+import { scan } from "@/libs/plaette";
 
 import AppLoadingMask from "./LoadingMask";
 
@@ -57,6 +67,7 @@ export default {
     src: "",
     title: "",
     timestamp: "",
+    plaette: [],
     isInited: false,
     isLoading: false
   }),
@@ -67,6 +78,11 @@ export default {
     this.$refs.image.addEventListener("load", e => {
       this.onImageLoad();
     });
+  },
+  filters: {
+    json(v) {
+      return JSON.stringify(v);
+    }
   },
   methods: {
     triggerUpload() {
@@ -84,28 +100,43 @@ export default {
         this.src = reader.result;
         event.target.value = "";
 
-        if (this.$refs.image.complete) {
-          this.onImageLoad();
-        }
+        // if (this.$refs.image.complete) {
+        //   this.onImageLoad();
+        // }
       });
 
       reader.readAsDataURL(file);
     },
     onImageLoad() {
-      this.isLoading = false;
-
       if (!this.isInited) {
         this.isInited = true;
       }
 
-      createTrackingTask("#app-image", result => {
-        this.$store.commit("setResult", result);
-      });
+      scan(this.$refs.image)
+        .then(data => {
+          this.isLoading = false;
+          this.$store.commit("setResult", data.result);
+          if (data.result.length > 0) {
+            this.$store.commit("setShowResult", true);
+          }
+          this.plaette = data.colors;
+        })
+        .error(console.error)
+
+      // createTrackingTask("#app-image", result => {
+      //   this.isLoading = false;
+      //   if (result.length) {
+      //     this.$store.commit("setResult", result);
+      //   } else {
+      //     console.log('no matching result found');
+      //   }
+      // });
     }
   },
   computed: {
     ...mapState({
-      showResult: state => state.scan.showResult
+      showResult: state => state.scan.showResult,
+      result: state => state.scan.result
     })
   },
   components: {
@@ -119,8 +150,9 @@ export default {
   @import "~@/../assets/base.scss";
 
   .app-empty-state-container {
-    @extend %full-page;
-    position: relative;
+    // @extend %full-page;
+    // position: absolute;
+    // padding: 3rem 0;
     text-align: center;
   }
 
@@ -136,6 +168,19 @@ export default {
     text-align: center;
     > img {
       max-width: 100%;
+    }
+  }
+
+  .app-plaette-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    .app-plaette {
+      width: 50px;
+      height: 30px;
+      border-radius: 4px;
+      margin: .5rem;
     }
   }
   

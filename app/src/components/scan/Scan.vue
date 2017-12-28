@@ -1,5 +1,5 @@
 <template>
-  <div class="app-page">
+  <div class="app-page app-page-wrapper">
 
     <!-- <app-scan-camera
       :showResult.sync="showResult"

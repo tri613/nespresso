@@ -13,8 +13,7 @@ export default {
   },
   mutations: {
     setResult(state, payload) {
-      state.result = payload;
-      state.showResult = true;
+      state.result = [...payload];
     },
     setShowResult(state, payload) {
       state.showResult = payload;

@@ -7,16 +7,23 @@ import ScanModule from "./scan";
 
 Vue.use(Vuex);
 
+const prefix = process.env.NODE_ENV === "production" ? "." : "";
+
 export default new Vuex.Store({
   state: {
     coffees: []
   },
   actions: {
     fetchCoffees({ commit, state }) {
+      const url = "/assets/data.json";
       if (!state.coffees.length) {
-        axios.get("/assets/data-v1.json")
+        axios.get(prefix + url)
           .then(response => {
-            commit("fetchCoffees", response.data);
+            const result = response.data.map(row => {
+              row.image = prefix + row.image;
+              return row;
+            });
+            commit("fetchCoffees", result);
           });
       }
     }

@@ -5,7 +5,6 @@
         md-with-hover
         v-for="(coffee, index) in filteredCoffees" 
         :key="index"
-        :style="{ backgroundColor: colorStyle(coffee.color.rgb)}"
         >
         <md-card-header>
           <md-card-header-text>
@@ -16,10 +15,11 @@
           </md-card-header-text>
           <md-card-media>
             <img :src="coffee.image" :alt="coffee.name">
+            <!-- <div v-if="coffee.error" class="app-tablet" :style="{'--color': colorStyle(coffee.color.rgb)}"></div> -->
           </md-card-media>
         </md-card-header>
         <md-card-content>
-          <p class="md-subheading" :style="colorStyle(coffee.color.rgb)">{{ coffee.details.subtitle }}</p>
+          <p class="md-subheading" :style="{ 'color': colorStyle(coffee.color.rgb) }">{{ coffee.details.subtitle }}</p>
           <p class="md-body-1">{{ coffee.details.description }}</p>
           <span v-for="tag in coffee.color.names" :key="tag" style="margin-right: 0.5rem;">
             <a href="#/" @click.prevent="writeToSearch(tag)">#{{ tag }}</a>
@@ -39,9 +39,7 @@ import { mapGetters, mapState } from "vuex";
 export default {
   methods: {
     colorStyle(rgb, transparency = 1) {
-      return {
-        color: `rgba(${rgb.join(",")}, ${transparency})`
-      };
+      return `rgba(${rgb.join(",")}, ${transparency})`;
     },
     writeToSearch(tag) {
       this.$store.commit("setKeywords", tag);
@@ -61,7 +59,7 @@ export default {
       return this.sortedCoffees.filter(coffee =>
         keywords.some(
           term =>
-            coffee.name.includes(term) ||
+            coffee.name.toLowerCase().includes(term) ||
             coffee.color.names.some(tag => tag.includes(term))
         )
       );

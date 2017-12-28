@@ -2,20 +2,9 @@ import "@/../node_modules/tracking/build/tracking-min";
 import store from "@/store";
 import uniqBy from "lodash/uniqby";
 
-window._tracker = null;
+import { isColorBetween } from "./shared";
 
-function isColorBetween(colorRgb, coffeeRgb) {
-  const [r, g, b] = colorRgb;
-  const [cr, cg, cb] = coffeeRgb;
-  const dx = r - cr;
-  const dy = g - cg;
-  const dz = b - cb;
-
-  // if (b - g >= 100 && r - g >= 60) {
-  //   return true;
-  // }
-  return dx * dx + dy * dy + dz * dz < 1800;
-}
+let _tracker = null;
 
 function registerColors(coffees) {
   coffees.forEach(coffee => {
