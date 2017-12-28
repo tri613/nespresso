@@ -14,6 +14,7 @@
           </div>
         </md-list-item>
       </md-list>
+      <p v-if="!result.length" class="container">沒有找到符合的咖啡口味喔！</p>
 
       <md-snackbar :md-duration="Infinity" :md-active="true" >
         <!-- <span>Don't see your coffee here?</span> -->

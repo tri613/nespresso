@@ -120,7 +120,7 @@ export default {
           }
           this.plaette = data.colors;
         })
-        .error(console.error);
+        .catch(err => alert(err));
     }
   },
   computed: {
