@@ -1,3 +1,3 @@
 <template>
-  <h1 class="md-title">Scan my coffee</h1>
+  <h1 class="md-title">咖啡掃描器</h1>
 </template>

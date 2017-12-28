@@ -15,11 +15,11 @@
 
       <md-list>
         <md-list-item @click="openSideNav = false" :to="{ 'name': 'scan' }">
-          <md-icon>photo_camera</md-icon> <span class="md-list-item-text">Scan my coffee</span>
+          <md-icon>photo_camera</md-icon> <span class="md-list-item-text">咖啡掃描器</span>
         </md-list-item>
 
         <md-list-item @click="openSideNav = false" :to="{ 'name': 'coffee' }">
-          <md-icon>list</md-icon> <span class="md-list-item-text">List of coffees</span>
+          <md-icon>list</md-icon> <span class="md-list-item-text">膠囊口味清單</span>
         </md-list-item>
       </md-list>
     </md-drawer>

@@ -1,5 +1,4 @@
 <template>
-    <!-- :class="[ isInited ? 'app-disabled' : '' ]" -->
   <div class="app-page app-page-wrapper">
     <transition name="app-fade" mode="out-in">
       <md-empty-state
@@ -121,16 +120,7 @@ export default {
           }
           this.plaette = data.colors;
         })
-        .error(console.error)
-
-      // createTrackingTask("#app-image", result => {
-      //   this.isLoading = false;
-      //   if (result.length) {
-      //     this.$store.commit("setResult", result);
-      //   } else {
-      //     console.log('no matching result found');
-      //   }
-      // });
+        .error(console.error);
     }
   },
   computed: {
@@ -141,6 +131,9 @@ export default {
   },
   components: {
     AppLoadingMask
+  },
+  destroyed() {
+    this.$store.commit("setShowResult", false);
   }
 };
 </script>

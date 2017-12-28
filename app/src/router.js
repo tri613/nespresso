@@ -11,4 +11,9 @@ const routes = [
   { path: "/coffee", name: "coffee", component: AppList, meta: { header: "AppListHeader" }}
 ];
 
-export default new VueRouter({ routes });
+export default new VueRouter({
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  }
+});

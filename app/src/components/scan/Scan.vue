@@ -10,8 +10,6 @@
     <app-scan-file-upload></app-scan-file-upload>
 
     <app-scan-result :result="result" :active.sync="showResult"></app-scan-result>
-
-    <!-- <app-snackbar :open.sync="notSupported"></app-snackbar> -->
   </div>
 </template>
 
