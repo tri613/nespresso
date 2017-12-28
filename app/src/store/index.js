@@ -15,7 +15,7 @@ export default new Vuex.Store({
   },
   actions: {
     fetchCoffees({ commit, state }) {
-      const url = "/assets/data.json";
+      const url = "/assets/data-v1.json";
       if (!state.coffees.length) {
         axios.get(prefix + url)
           .then(response => {
