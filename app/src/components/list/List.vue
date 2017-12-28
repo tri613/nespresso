@@ -15,12 +15,12 @@
           </md-card-header-text>
           <md-card-media>
             <!-- <img :src="coffee.image" :alt="coffee.name"> -->
-            <!-- <div class="app-tablet" :style="{ '--color': colorStyle(coffee.color.rgb) }"></div> -->
+            <!-- <div class="app-tablet" :style="{ '--color': rgbToColor(coffee.color.rgb) }"></div> -->
             <app-coffee-color :rgb="coffee.color.rgb"></app-coffee-color>
           </md-card-media>
         </md-card-header>
         <md-card-content>
-          <p class="md-subheading" :style="{ 'color': colorStyle(coffee.color.rgb) }">{{ coffee.details.subtitle }}</p>
+          <p class="md-subheading" :style="{ 'color': rgbToColor(coffee.color.rgb) }">{{ coffee.details.subtitle }}</p>
           <p class="md-body-1">{{ coffee.details.description }}</p>
           <span v-for="tag in coffee.color.names" :key="tag" style="margin-right: 0.5rem;">
             <a href="#/" @click.prevent="writeToSearch(tag)">#{{ tag }}</a>
@@ -37,12 +37,11 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 import AppCoffeeColor from "./../shared/CoffeeColor";
+import { RgbColorMixin } from "@/mixins";
 
 export default {
+  mixins: [RgbColorMixin],
   methods: {
-    colorStyle(rgb, transparency = 1) {
-      return `rgba(${rgb.join(",")}, ${transparency})`;
-    },
     writeToSearch(tag) {
       this.$store.commit("setKeywords", tag);
     }

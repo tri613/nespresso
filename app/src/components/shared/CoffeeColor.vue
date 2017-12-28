@@ -5,23 +5,26 @@
 </template>
 
 <script>
+import { RgbColorMixin } from "@/mixins";
+
 export default {
+  mixins: [RgbColorMixin],
   props: {
     rgb: {
       type: Array,
       required: true
     },
     width: {
-      type: Number,
-      default: 0
+      type: String,
+      default: null
     }
   },
   computed: {
     color() {
-      return `rgb(${this.rgb.join(",")}`;
+      return this.rgbToColor(this.rgb);
     },
     containerStyle() {
-      if (this.width <= 0) {
+      if (!this.width) {
         return {
           width: "100%",
           height: "100%"
@@ -29,8 +32,8 @@ export default {
       }
 
       return {
-        width: this.width + "px",
-        height: this.width + "px"
+        width: this.width,
+        height: this.width
       };
     }
   }

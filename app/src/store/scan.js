@@ -5,11 +5,7 @@ export default {
     showResult: false,
     result: [],
     notSupported: false,
-    trackingJs: {
-      tracker: null,
-      task: null
-    },
-    startTaskHandler: () => { throw Error("startTaskHandler not set!"); }
+    startTaskHandler: function() { throw Error("startTaskHandler is not set!"); }
   },
   mutations: {
     setResult(state, payload) {

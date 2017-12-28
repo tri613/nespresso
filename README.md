@@ -34,11 +34,13 @@
 
 ## 爬蟲
 
+> 爬蟲現在已經不可用啦，因為原本官方網站也改版了，還改成用vue寫(XD)，爬這種太困難了所以也作罷。（反正舊的繼續用...)
+
 爬蟲除了解析 HTML tag，這次主要是嘗試使用es7裡面的`async / await`來處理Promise物件，  
 雖然用起來還怪生疏的，不過的確是能感受到他的好處。
 (不用一直`then`覺得很開心)
 
 ### 執行爬蟲
 ```console
-node --harmony-async-await crawler/crawler.js
+node crawler/crawler.js
 ```

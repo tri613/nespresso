@@ -10,7 +10,7 @@ const coffees = store.state.coffees;
 
 export function scan(imageSrc) {
   return Vibrant.from(imageSrc)
-    .useQuantizer(Vibrant.Quantizer.WebWorker)
+    // .useQuantizer(Vibrant.Quantizer.WebWorker)
     .getPalette()
     .then(plaette => {
       return map(plaette, (value, key) => {
