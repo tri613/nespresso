@@ -24,6 +24,7 @@
 
       <md-snackbar :md-duration="Infinity" :md-active="true" >
         <span>沒看到你的咖啡嗎？</span>
+        <md-button class="md-dense md-accent" @click="$store.commit('setShowResult', false)">返回</md-button>
         <md-button id="app-snackbar-btn" class="md-raised md-accent md-dense" @click="close()">再試一遍</md-button>
       </md-snackbar>
     </div>

@@ -10,7 +10,7 @@ const coffees = store.state.coffees;
 
 export function scan(imageSrc) {
   return Vibrant.from(imageSrc)
-    // .useQuantizer(Vibrant.Quantizer.WebWorker)
+    .useQuantizer(Vibrant.Quantizer.WebWorker)
     .getPalette()
     .then(plaette => {
       return map(plaette, (value, key) => {
@@ -19,6 +19,7 @@ export function scan(imageSrc) {
     })
     .then(colors => {
       const table = {};
+
       coffees.forEach(coffee =>
         colors.forEach(color => {
           const diff = Vibrant.Util.rgbDiff(color, coffee.color.rgb);
@@ -27,13 +28,9 @@ export function scan(imageSrc) {
       );
 
       const result = map(table, (value, key) => {
-        if (value <= 10) {
-          const coffee = coffees.find(row => row.name === key);
-          return { ...coffee, diff: value };
-        }
-        return null;
+        const coffee = coffees.find(row => row.name === key);
+        return { ...coffee, diff: value };
       })
-        .filter(row => !!row)
         .sort((a, b) => a.diff - b.diff);
 
       return { colors, result };
