@@ -3,12 +3,9 @@ import "@/../node_modules/node-vibrant/dist/vibrant.worker.js";
 // import * as Vibrant from "node-vibrant/lib/bundle.worker.js";
 
 import store from "@/store";
-
 import { isColorBetween } from "./shared";
 
-const coffees = store.state.coffees;
-
-export function scan(imageSrc) {
+export function scan(coffees, imageSrc) {
   return Vibrant.from(imageSrc)
     .useQuantizer(Vibrant.Quantizer.WebWorker)
     .getPalette()

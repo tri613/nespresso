@@ -111,7 +111,7 @@ export default {
         this.isInited = true;
       }
 
-      scan(this.$refs.image)
+      scan(this.coffees, this.$refs.image)
         .then(data => {
           this.isLoading = false;
           this.$store.commit("setResult", data.result);
@@ -125,6 +125,7 @@ export default {
   },
   computed: {
     ...mapState({
+      coffees: state => state.coffees,
       showResult: state => state.scan.showResult,
       result: state => state.scan.result
     })
