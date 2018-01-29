@@ -1,0 +1,25 @@
+@import "~vue-material/dist/theme/engine";
+
+@include md-register-theme("default", (
+  primary: $primary, 
+  accent: $accent 
+));
+
+@include md-register-theme("default-dark", (
+  primary: $primary, 
+  accent: $accent ,
+  theme: dark
+));
+
+@include md-register-theme("reverse", (
+  primary: $accent, 
+  accent: $primary 
+));
+
+@include md-register-theme("reverse-dark", (
+  primary: $accent, 
+  accent: $primary,
+  theme: dark
+));
+
+@import "~vue-material/dist/theme/all";

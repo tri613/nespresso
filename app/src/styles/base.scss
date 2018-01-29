@@ -1,0 +1,8 @@
+$primary: #6b6562;
+$accent: #ef5350; //#c5a578;
+$nav-height: 56px;
+$full-height: calc(100% - 56px);
+
+@import "./mixins";
+@import "./theme";
+@import "./app";

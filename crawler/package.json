@@ -1,0 +1,21 @@
+{
+  "name": "nespresso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fetch.js",
+  "scripts": {
+    "build": "babel src --out-dir dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "color-thief-jimp": "^2.0.2",
+    "get-rgba-palette": "^2.0.1",
+    "jimp": "^0.2.27",
+    "phantom": "^4.0.5",
+    "spa-crawler": "^2.0.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {}
+}
