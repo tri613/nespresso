@@ -65,7 +65,9 @@ export default {
   @import "~@/styles/base.scss";
 
   #app-scan-result {
-    @extend %full-page;
+    // @extend %full-page;
+    top: 40px;
+    min-height: calc(100% - 40px);
     background: #FFF;
     z-index: 10;
     width: 100%;
