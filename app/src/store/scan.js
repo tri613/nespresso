@@ -1,5 +1,3 @@
-import "@/../node_modules/tracking/build/tracking-min";
-
 export default {
   state: {
     showResult: false,
