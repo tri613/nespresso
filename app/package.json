@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --host 0.0.0.0",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "deploy": "npm run build && cd ../ && sh ./deploy.sh && cd app/"
+    "deploy": "npm run build && sh ./../deploy.sh"
   },
   "dependencies": {
     "axios": "^0.17.1",
